@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rankmi Academy · El Cerebro del Conocimiento</title>
+    <!-- Fuentes e iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Mantenemos todos los estilos anteriores y añadimos algunos nuevos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #001a3d;
+            font-family: 'Inter', 'Montserrat', sans-serif;
+            color: #e0f0ff;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1600px;
+            margin: 0 auto;
+            background-color: rgba(0, 26, 61, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.5rem 1.5rem 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+        }
+
+        /* Header reorganizado en dos filas con texto explicativo */
+        .suite-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .header-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .header-link {
+            background: #ff8200;
+            color: #001a3d;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #00ffff;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .header-link i {
+            font-size: 1.1rem;
+        }
+        .header-link:hover {
+            background: #00ffff;
+            color: #001a3d;
+            border-color: #ff8200;
+            box-shadow: 0 0 15px #00ffff;
+        }
+        .header-link.secondary {
+            background: transparent;
+            color: #00ffff;
+            border-color: #00ffff;
+        }
+        .header-link.secondary:hover {
+            background: #00ffff20;
+            color: white;
+        }
+        .foco-badge {
+            background: #00ffff20;
+            border: 1px dashed #00ffff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        /* Botones de acción con texto de acceso rápido */
+        .action-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .action-header span {
+            color: #00ffff;
+            font-weight: 600;
+            background: #001a3d;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            border: 1px solid #ff8200;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .sugerencias-btn {
+            background: #ff8200;
+            color: #001a3d;
+            border: 2px solid #00ffff;
+            border-radius: 40px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+        .sugerencias-btn:hover {
+            background: #00ffff;
+            border-color: #ff8200;
+            box-shadow: 0 0 15px #00ffff;
+        }
+        .sugerencias-btn.outline {
+            background: transparent;
+            color: #00ffff;
+            border-color: #ff8200;
+        }
+        .sugerencias-btn.outline:hover {
+            background: #ff8200;
+            color: #001a3d;
+        }
+
+        /* Credenciales de acceso */
+        .credenciales {
+            background: #001a3d;
+            border: 1px solid #ff8200;
+            border-radius: 2rem;
+            padding: 0.8rem 2rem;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+        .credenciales i {
+            color: #00ffff;
+            margin-right: 6px;
+        }
+        .credenciales span {
+            background: #ff8200;
+            color: #001a3d;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        /* Layout de 2 columnas */
+        .arquitectura-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* ===== PANEL IZQUIERDO: MAPA ===== */
+        .mapa-panel {
+            background: rgba(0, 20, 50, 0.7);
+            border: 1px solid #00ffff40;
+            border-radius: 2rem;
+            padding: 1.2rem;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .mapa-titulo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ff8200;
+            border-bottom: 2px solid #ff8200;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .modulo-grupo {
+            margin-bottom: 1.8rem;
+        }
+        .modulo-header {
+            font-weight: 700;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .modulo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .modulo-item {
+            background: #001a3d;
+            border: 1px solid #ff8200;
+            border-radius: 30px;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: white;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .modulo-item i {
+            color: #ff8200;
+            font-size: 0.7rem;
+        }
+        .modulo-item:hover {
+            background: #ff8200;
+            color: #001a3d;
+            transform: scale(1.02);
+            box-shadow: 0 0 15px #ff8200;
+        }
+        .modulo-item:hover i {
+            color: #001a3d;
+        }
+
+        .relaciones-grafico {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #002856;
+            border-radius: 1.5rem;
+            border: 1px dashed #00ffff;
+            font-size: 0.75rem;
+            color: #a0cfef;
+            line-height: 1.6;
+        }
+        .relaciones-grafico i {
+            color: #ff8200;
+            margin-right: 4px;
+        }
+
+        /* Botones de acción en el mapa */
+        .mapa-action-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .mapa-plan-btn, .mapa-tips-btn {
+            flex: 1;
+        }
+        .mapa-plan-btn .sugerencias-btn, .mapa-tips-btn .sugerencias-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        .mapa-tips-btn .sugerencias-btn {
+            background: #001a3d;
+            color: #00ffff;
+            border-color: #ff8200;
+        }
+        .mapa-tips-btn .sugerencias-btn:hover {
+            background: #ff8200;
+            color: #001a3d;
+        }
+
+        /* ===== PANEL DERECHO: PLAN DE CURSOS ===== */
+        .plan-panel {
+            background: rgba(0, 30, 60, 0.7);
+            border: 1px solid #ff8200;
+            border-radius: 2rem;
+            padding: 1.2rem;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 40, 80, 0.7);
+            border: 1px solid #00ffff40;
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.2rem;
+            gap: 1rem;
+        }
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .metric i {
+            color: #ff8200;
+            font-size: 1.5rem;
+        }
+        .metric .label {
+            font-size: 0.8rem;
+            color: #a0cfef;
+        }
+        .metric .value {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .cerebro-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #001a3d;
+            border: 1px solid #ff8200;
+            border-radius: 40px;
+            padding: 0.3rem 1.2rem;
+        }
+        .cerebro-icon {
+            font-size: 2rem;
+            color: #ff8200;
+            filter: drop-shadow(0 0 5px #ff8200);
+        }
+        .cerebro-progreso {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00ffff;
+        }
+
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            background: #002856;
+            border-radius: 2rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ff8200;
+            align-items: center;
+        }
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .slider-group label {
+            font-weight: 600;
+            color: #ff8200;
+            font-size: 0.9rem;
+        }
+        .slider-group input {
+            width: 140px;
+            accent-color: #ff8200;
+        }
+        .slider-group span {
+            background: #001a3d;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            border: 1px solid #00ffff;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .modo-group {
+            display: flex;
+            gap: 1rem;
+            background: #001a3d;
+            padding: 0.3rem 1rem;
+            border-radius: 3rem;
+            border: 1px solid #00ffff;
+        }
+        .modo-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .time-estimate {
+            background: #ff820020;
+            border: 1px solid #ff8200;
+            border-radius: 2rem;
+            padding: 0.5rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .time-estimate .main {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .progreso-principal {
+            margin: 1rem 0 1.2rem;
+            background: #001e3f;
+            border-radius: 60px;
+            padding: 1rem 1.5rem;
+            border: 1px dashed #ff8200;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+        }
+        .barra-container {
+            flex: 1;
+            min-width: 180px;
+        }
+        .barra-fondo {
+            height: 16px;
+            background: #102b44;
+            border-radius: 30px;
+            border: 1px solid #00ffff60;
+            overflow: hidden;
+        }
+        .barra-lleno {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff8200, #ffb152);
+        }
+
+        .fase-selectores {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .btn-fase {
+            background: transparent;
+            border: 2px solid #ff8200;
+            color: #ff8200;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .btn-fase:hover {
+            background: #ff8200;
+            color: #001a3d;
+        }
+
+        .seccion-titulo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ff8200;
+            margin: 1.5rem 0 0.5rem;
+            border-bottom: 1px dashed #00ffff;
+            padding-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .seccion-titulo i {
+            color: #00ffff;
+        }
+
+        .fases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .fase-card {
+            background: rgba(0, 30, 60, 0.9);
+            border: 1px solid #00ffff30;
+            border-radius: 1.5rem;
+            padding: 1rem;
+        }
+        .fase-card.avanzado {
+            border-color: #ff8200;
+            background: rgba(50, 20, 30, 0.8);
+            opacity: 0.9;
+        }
+        .fase-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 2px solid #ff8200;
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .fase-header i {
+            color: #ff8200;
+            font-size: 1.5rem;
+        }
+        .fase-progreso-mini {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 8px 0;
+            font-size: 0.75rem;
+        }
+        .barra-fase-fondo {
+            flex: 1;
+            height: 6px;
+            background: #102b44;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .barra-fase-lleno {
+            height: 100%;
+            width: 0%;
+            background: #ff8200;
+        }
+
+        .curso-item {
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid #ff8200;
+            margin: 0.6rem 0;
+            padding: 0.5rem;
+            border-radius: 0 8px 8px 0;
+            transition: 0.15s;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 0.8rem;
+            position: relative;
+            cursor: help;
+        }
+        .curso-item.avanzado {
+            border-left-color: #00ffff;
+            opacity: 0.8;
+        }
+        .curso-item:hover {
+            background: rgba(0,200,255,0.15);
+            box-shadow: 0 0 10px #00ffff;
+        }
+        .curso-check {
+            accent-color: #ff8200;
+            margin-top: 2px;
+        }
+        .curso-nombre {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .modulo-tag {
+            background: #00ffff20;
+            border: 1px solid #00ffff;
+            border-radius: 30px;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.6rem;
+            color: #00ffff;
+            margin-left: 4px;
+        }
+        .punto-critico {
+            font-size: 0.7rem;
+            color: #a0cfef;
+            margin-top: 3px;
+            font-style: italic;
+        }
+
+        .custom-tooltip {
+            position: absolute;
+            background: #001a3d;
+            border: 2px solid #ff8200;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            max-width: 250px;
+            color: white;
+            font-size: 0.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8), 0 0 0 1px #00ffff;
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            pointer-events: none;
+            transition: opacity 0.15s;
+            line-height: 1.5;
+        }
+
+        .spoiler {
+            background: #ff820020;
+            border-left: 4px solid #ff8200;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #00ffff60;
+        }
+
+        /* MODALES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 10, 20, 0.9);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.3s;
+        }
+        .modal-content {
+            background: #001a3d;
+            border: 3px solid #ff8200;
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px #00ffff;
+            color: white;
+            position: relative;
+        }
+        .modal-content h2 {
+            color: #ff8200;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .modal-content p {
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .modal-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal-content li {
+            margin-bottom: 0.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            color: #ff8200;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            color: #00ffff;
+            transform: scale(1.1);
+        }
+        .modal-btn {
+            background: #ff8200;
+            color: #001a3d;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            border: 2px solid #00ffff;
+        }
+        .modal-btn:hover {
+            background: #00ffff;
+            border-color: #ff8200;
+        }
+
+        /* Para el modal de contacto, más pequeño */
+        .modal-contacto .modal-content {
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Estilos para el planificador */
+        .plan-opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .plan-opciones label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        .plan-opciones input[type="date"], .plan-opciones select {
+            background: #001a3d;
+            border: 1px solid #ff8200;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 30px;
+            font-family: inherit;
+            margin-left: 0.5rem;
+        }
+        .tabla-plan {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+        .tabla-plan th {
+            background: #ff8200;
+            color: #001a3d;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        .tabla-plan td {
+            border-bottom: 1px solid #00ffff40;
+            padding: 0.5rem;
+        }
+        .export-btn {
+            background: #00ffff;
+            color: #001a3d;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* Bloque de tips motivacionales (reutilizado) */
+        .tips-block {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #002856;
+            border: 1px solid #ff8200;
+            border-radius: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .tips-block h3 {
+            color: #ff8200;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .tips-block strong {
+            color: #00ffff;
+        }
+        .tips-block ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 1000px) {
+            .arquitectura-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- MODAL INICIAL (texto actualizado) -->
+    <div id="modalInicial" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="cerrarModal">&times;</button>
+            <h2><i class="fas fa-brain"></i> El Origen: potenciar el conocimiento con Academy y otras iniciativas</h2>
+            <p><strong>Desde octubre de 2025</strong> hemos estado trabajando en iniciativas orientadas a mejorar las fuentes de conocimiento en Rankmi. La razón es evidente: contamos con pruebas de que existe una gran oportunidad de mejora.</p>
+            <p>Hoy, equipos de ingenieros y especialistas dedican recursos y tiempo muy valiosos a revisar incidentes que, en realidad, no corresponden a fallas del sistema. Tenemos casos que reflejan desconocimiento o dudas sobre la plataforma, lo que genera:</p>
+            <ul>
+                <li><i class="fas fa-times-circle" style="color:#ff8200;"></i> Uso inapropiado de recursos técnicos, desviando esfuerzos de lo que realmente importa: resolver bugs e incidencias reales.</li>
+                <li><i class="fas fa-times-circle" style="color:#ff8200;"></i> Pérdida de foco operativo, al tratar consultas como si fueran problemas críticos.</li>
+                <li><i class="fas fa-times-circle" style="color:#ff8200;"></i> Colas de tickets ineficientes, que retrasan la atención de los casos genuinos y afectan la productividad desgastando al equipo.</li>
+            </ul>
+            <p><strong>Iniciativas en marcha:</strong></p>
+            <ul>
+                <li><i class="fas fa-cube" style="color:#00ffff;"></i> <strong>Proyecto Full Suite:</strong> integra todas las piezas del sistema y muestra cómo se conectan entre sí.</li>
+                <li><i class="fas fa-graduation-cap" style="color:#00ffff;"></i> <strong>Rankmi Academy:</strong> portal de materiales, cursos y microlearning con videos especializados.</li>
+                <li><i class="fas fa-ticket-alt" style="color:#00ffff;"></i> <strong>Nueva etapa en tickets DO:</strong> Es un filtro y archiva gran parte de las incidencias antes de llegar a YT.</li>
+                <li><i class="fas fa-users" style="color:#00ffff;"></i> <strong>Onboarding transversal:</strong> próximamente, un espacio para integrar a nuevos miembros del equipo.</li>
+                <li><i class="fas fa-calendar-alt" style="color:#00ffff;"></i> <strong>Ciclo de inducciones empoderado:</strong> sesiones en vivo para consultores, con tips prácticos.</li>
+            </ul>
+            <p>Este portal es el <strong>cerebro del conocimiento</strong> que estamos construyendo juntos para que puedas ser parte de esto. Cada curso que completes llenará de información este cerebro, reduciendo la brecha de entendimiento y empoderando a clientes, consultores y PMs.</p>
+            <p style="font-weight: bold; color: #00ffff; border-top: 1px solid #ff8200; padding-top: 1rem;">✨ Todo esto, con el objetivo de <strong>mejorar la eficiencia de la operación y empoderar a clientes</strong>. La evolución continúa, que nos caracteriza en pertenecer a RANKMI.</p>
+            <button class="modal-btn" id="cerrarModalBtn">¡Comenzar a construir!</button>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONTACTO (sugerencias) -->
+    <div id="modalContacto" class="modal-overlay" style="display: none;">
+        <div class="modal-content modal-contacto">
+            <button class="modal-close" id="cerrarModalContacto">&times;</button>
+            <h2><i class="fas fa-envelope"></i> Contacto responsable</h2>
+            <p style="font-size: 1.2rem; margin: 2rem 0;">
+                <i class="fas fa-user" style="color:#ff8200;"></i> Emmanuel Nahín<br>
+                <strong style="background:#ff8200; color:#001a3d; padding:0.3rem 1rem; border-radius:30px;">emmanuel.nahin@rankmi.com</strong>
+            </p>
+            <p>También puedes contactar por los canales internos de Rankmi: <strong>Chatmi</strong> y <strong>reuniones</strong>.</p>
+            <p>Agenda directamente en mi calendario:<br>
+                <a href="https://calendar.google.com/calendar/u/0/r?cid=ZW1tYW51ZWwubmFoaW5AcmFua21pLmNvbQ" target="_blank" style="color:#00ffff; word-break:break-all;">https://calendar.google.com/calendar/u/0/r?cid=emmanuel.nahin@rankmi.com</a>
+            </p>
+            <button class="modal-btn" id="cerrarModalContactoBtn">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- MODAL ONBOARDING TRANSVERSAL -->
+    <div id="modalOnboarding" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="cerrarModalOnboarding">&times;</button>
+            <h2><i class="fas fa-users"></i> Onboarding transversal</h2>
+            <p>Este espacio está actualmente en construcción. Pronto encontrarás aquí materiales y guías para integrar a nuevos miembros del equipo de manera transversal.</p>
+            <p><i class="fas fa-tools" style="color:#ff8200;"></i> <strong>Link pronto será dejado acá.</strong></p>
+            <button class="modal-btn" id="cerrarModalOnboardingBtn">Entendido</button>
+        </div>
+    </div>
+
+    <!-- MODAL CICLO DE INDUCCIONES -->
+    <div id="modalInducciones" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="cerrarModalInducciones">&times;</button>
+            <h2><i class="fas fa-calendar-alt"></i> Ciclo de inducciones empoderado</h2>
+            <p>Se están agendando sesiones de inducción para tomar los tips en el momento de empoderar y explicar la plataforma a los clientes.</p>
+            <p>Mantente atento a las convocatorias por los canales oficiales. ¡Pronto anunciaremos las fechas!</p>
+            <button class="modal-btn" id="cerrarModalInduccionesBtn">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- MODAL ODOO -->
+    <div id="modalOdoo" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="cerrarModalOdoo">&times;</button>
+            <h2><i class="fas fa-cogs"></i> Odoo: Trabajo en etapas descriptivas</h2>
+            <p>Estamos trabajando en etapas descriptivas para los proyectos, pruebas UAT y materiales en continua mejora.</p>
+            <p>Pronto habrá más información disponible. Mientras tanto, puedes consultar los avances en los canales habituales.</p>
+            <button class="modal-btn" id="cerrarModalOdooBtn">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- MODAL TICKETS: SOPORTE INTERNO -->
+    <div id="modalTickets" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="cerrarModalTickets">&times;</button>
+            <h2><i class="fas fa-ticket-alt"></i> Tickets: Soporte interno</h2>
+            <p>Por favor, no reportes incidencias directamente a YouTrack. Todo debe pasar primero por este canal de soporte interno:</p>
+            <p style="text-align: center; margin: 1.5rem 0;">
+                <a href="https://rankmi.odoo.com/en/soporte-interno" target="_blank" style="background:#ff8200; color:#001a3d; padding:0.8rem 2rem; border-radius:40px; font-weight:700; text-decoration:none; border:2px solid #00ffff;">Ir a Soporte interno (Odoo)</a>
+            </p>
+            <p>Tu solicitud será atendida por un specialist antes de ser escalada a un ticket oficial en YouTrack. Esto nos ayuda a filtrar y agilizar la atención.</p>
+            <button class="modal-btn" id="cerrarModalTicketsBtn">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- MODAL TIPS (nuevo, con los tips motivacionales) -->
+    <div id="modalTips" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 700px;">
+            <button class="modal-close" id="cerrarModalTips">&times;</button>
+            <h2><i class="fas fa-lightbulb"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Éxito"</h2>
+            <div class="tips-block" style="margin-top:0; border:none; background:transparent; padding:0;">
+                <!-- Contenido insertado por JS, pero lo pondremos directamente aquí para evitar duplicar lógica -->
+                <h3><i class="fas fa-hard-hat"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Exito"</h3>
+                <p><strong>1. Gestion de Agenda (El Blindaje de Valor)</strong><br>
+                Tip: Reserva tus martes y jueves de 9:00 AM a 10:00 AM. Es el momento ideal para aprovechar tu maxima energia mental antes de iniciar la jornada operativa.<br>
+                Pro-Tip: Implementa el "Time Box de Enfoque". Si el curso dura 40 min, agenda 60 min. Usa esos 20 min extra para aplicar lo aprendido inmediatamente en un caso real de tus proyectos actuales.<br>
+                Recomendacion: Manten tu calendario como "Ocupado" o "Tiempo de Enfoque". Asi aseguras que este espacio de crecimiento sea respetado como una prioridad estrategica.</p>
+
+                <p><strong>2. Prioridad: Excelencia en el Servicio a traves del Aprendizaje</strong><br>
+                Tip: Mira cada curso como el proceso de "afilar la sierra". Estar actualizado en la configuracion del ATS te permite ofrecer soluciones mas rapidas y precisas a tus clientes.<br>
+                Pro-Tip: Regla de "Mente Despejada". Atiende tus pendientes criticos antes de iniciar. Al entrar al curso con la bandeja organizada, tu capacidad de retencion tecnica fluye al maximo.</p>
+
+                <p><strong>3. Ejecucion Tecnica (Nivel Experto)</strong><br>
+                Tip: Practica en tiempo real con Pantalla Dividida. Ten la Academy a un lado y el Ambiente de Pruebas al otro. La maestria se alcanza haciendo mientras descubres.<br>
+                Pro-Tip: Documenta tus "Ganancias de Eficiencia". Anota cuanto tiempo ahorraras en futuras tareas gracias a lo aprendido. Cuantificar tu agilidad es el mejor motor de motivacion.</p>
+
+                <p><strong>4. Mentalidad de Crecimiento (Mindset)</strong><br>
+                Tip: El dominio total de la plataforma construye tu Autoridad Profesional. La seguridad tecnica se proyecta como confianza ante el cliente.<br>
+                Pro-Tip: Evoluciona de Usuario a Arquitecto. Mientras el usuario conoce el proceso, el Arquitecto comprende como cada configuracion potencia el clima organizacional y la productividad.</p>
+
+                <p><strong>📝 Contenido para tu Celda de "Recomendaciones de Exito"</strong><br>
+                Puedes copiar y pegar esto en una pestana de "Reglas de Oro" en tu Excel:</p>
+                <ul>
+                    <li><strong>Cero Reuniones:</strong> Prohibido tomar llamadas durante los 40 min del curso.</li>
+                    <li><strong>Preparacion de Obra:</strong> Ten a mano los manuales de producto de Rankmi para profundizar.</li>
+                    <li><strong>Planificacion Bimestral:</strong> Si te saltas una semana, recupera los 2 cursos el viernes. No dejes que la "deuda tecnica" se acumule al Mes 2.</li>
+                    <li><strong>Prioridad 1:</strong> El cliente es primero, pero el aprendizaje es el que garantiza que el cliente tenga exito. Sin aprendizaje no hay escalabilidad.</li>
+                </ul>
+            </div>
+            <button class="modal-btn" id="cerrarModalTipsBtn">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- MODAL PLANIFICADOR (con tips internos) -->
+    <div id="modalPlan" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 800px;">
+            <button class="modal-close" id="cerrarModalPlan">&times;</button>
+            <h2><i class="fas fa-calendar-plus"></i> Planifica tu aprendizaje</h2>
+            <div class="plan-opciones">
+                <label>Fecha de inicio: <input type="date" id="fechaInicioPlan" value="2025-03-01"></label>
+                <label>Intensidad:
+                    <select id="intensidadPlan">
+                        <option value="ligera">Ligera (1 curso/día)</option>
+                        <option value="media" selected>Media (2 cursos/día)</option>
+                        <option value="extrema">Extrema (4 cursos/día)</option>
+                    </select>
+                </label>
+                <label><input type="checkbox" id="soloPendientes" checked> Incluir solo cursos pendientes (según checkboxes)</label>
+            </div>
+            <button class="modal-btn" id="generarPlanBtn">Generar plan</button>
+            <div id="planResultado" style="margin-top: 1.5rem; max-height: 400px; overflow-y: auto;">
+                <!-- Aquí se insertará la tabla del plan y luego los tips -->
+            </div>
+            <button class="export-btn" id="exportarPlanBtn" style="display:none;">Exportar como Excel</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header reorganizado en dos filas con texto explicativo -->
+        <div class="suite-header">
+            <!-- Primera fila: enlaces externos y badge de fecha -->
+            <div class="header-row">
+                <div class="header-links">
+                    <a href="https://proyect-full-suite.pages.dev" target="_blank" class="header-link">
+                        <i class="fas fa-cube"></i> Full Suite Rankmi
+                    </a>
+                    <a href="https://docs.google.com/spreadsheets/d/1cRs0BuuvMDWtmhymGzMAsPqONifyXT4EALsmwvxOZ-Q/edit?gid=1717311564" target="_blank" class="header-link secondary">
+                        <i class="fas fa-chart-gantt"></i> Gantt Construcción
+                    </a>
+                    <a href="https://docs.google.com/spreadsheets/d/1k7Eg5e655R4HziifNSzUMhzV3c5_jSYmr1FajPkFU4g/edit?gid=0" target="_blank" class="header-link secondary">
+                        <i class="fas fa-video"></i> Microlearning (videos)
+                    </a>
+                </div>
+                <div class="foco-badge">
+                    <i class="fas fa-bullseye"></i> Foco: Data Owner (DO)
+                    <span id="fechaHora" style="font-family: monospace; background:#001a3d; padding:0.2rem 0.5rem; border-radius:20px;"></span>
+                </div>
+            </div>
+            <!-- Segunda fila: texto explicativo + botones de iniciativas -->
+            <div class="header-row">
+                <div class="action-header">
+                    <span>🔍 Ingresa para ver iniciativas o información:</span>
+                    <div class="action-buttons">
+                        <button class="sugerencias-btn outline" id="onboardingBtn">
+                            <i class="fas fa-users"></i> Onboarding transversal
+                        </button>
+                        <button class="sugerencias-btn outline" id="induccionesBtn">
+                            <i class="fas fa-calendar-alt"></i> Ciclo inducciones
+                        </button>
+                        <button class="sugerencias-btn outline" id="odooBtn">
+                            <i class="fas fa-cogs"></i> Odoo
+                        </button>
+                        <button class="sugerencias-btn outline" id="ticketsBtn">
+                            <i class="fas fa-ticket-alt"></i> Tickets: Soporte interno
+                        </button>
+                        <button class="sugerencias-btn" id="sugerenciasBtn">
+                            <i class="fas fa-lightbulb"></i> Sugerencias
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credenciales de acceso -->
+        <div class="credenciales">
+            <i class="fas fa-graduation-cap"></i> Los cursos están en <strong>academy.rankmi.com</strong> · Usuario: <span>correo empresa</span> · Contraseña inicial: <span>12345</span>
+        </div>
+
+        <!-- Layout de 2 columnas -->
+        <div class="arquitectura-layout">
+            <!-- COLUMNA IZQUIERDA: MAPA con botones de acción -->
+            <div class="mapa-panel">
+                <div class="mapa-titulo">
+                    <i class="fas fa-project-diagram"></i> Mapa del Ecosistema creado para los cursos DO nivel 1
+                </div>
+                <!-- Módulos agrupados -->
+                <div class="modulo-grupo">
+                    <div class="modulo-header"><i class="fas fa-database"></i> DATOS MAESTROS & BASE</div>
+                    <div class="modulo-grid">
+                        <span class="modulo-item" data-modulo="master"><i class="fas fa-users"></i> Master Personas</span>
+                        <span class="modulo-item" data-modulo="jerarquia"><i class="fas fa-sitemap"></i> Jerarquía</span>
+                        <span class="modulo-item" data-modulo="posiciones"><i class="fas fa-briefcase"></i> Posiciones/Cargos</span>
+                        <span class="modulo-item" data-modulo="segmentos"><i class="fas fa-tags"></i> Segmentos</span>
+                        <span class="modulo-item" data-modulo="costos"><i class="fas fa-coins"></i> Centro Costos</span>
+                    </div>
+                </div>
+                <div class="modulo-grupo">
+                    <div class="modulo-header"><i class="fas fa-cubes"></i> HUB / PLATAFORMA</div>
+                    <div class="modulo-grid">
+                        <span class="modulo-item" data-modulo="roles"><i class="fas fa-lock"></i> Roles/Permisos</span>
+                        <span class="modulo-item" data-modulo="workflows"><i class="fas fa-diagram-project"></i> Workflows</span>
+                        <span class="modulo-item" data-modulo="documentos"><i class="fas fa-file-signature"></i> Firma Digital</span>
+                        <span class="modulo-item" data-modulo="asistencia"><i class="fas fa-clock"></i> Control Asistencia</span>
+                        <span class="modulo-item" data-modulo="remuneraciones"><i class="fas fa-file-invoice"></i> Remuneraciones</span>
+                    </div>
+                </div>
+                <div class="modulo-grupo">
+                    <div class="modulo-header"><i class="fas fa-heart"></i> CULTURA Y BIENESTAR</div>
+                    <div class="modulo-grid">
+                        <span class="modulo-item" data-modulo="clima"><i class="fas fa-cloud-sun"></i> Clima</span>
+                        <span class="modulo-item" data-modulo="ef"><i class="fas fa-poll"></i> Encuestas (E&F)</span>
+                        <span class="modulo-item" data-modulo="reconocimiento"><i class="fas fa-trophy"></i> Reconocimiento</span>
+                        <span class="modulo-item" data-modulo="beneficios"><i class="fas fa-gift"></i> Beneficios</span>
+                        <span class="modulo-item" data-modulo="ayuda"><i class="fas fa-life-ring"></i> Centro Ayuda</span>
+                    </div>
+                </div>
+                <div class="modulo-grupo">
+                    <div class="modulo-header"><i class="fas fa-chart-line"></i> TALENTO Y DESARROLLO</div>
+                    <div class="modulo-grid">
+                        <span class="modulo-item" data-modulo="ats"><i class="fas fa-user-tie"></i> Selección (ATS)</span>
+                        <span class="modulo-item" data-modulo="metas"><i class="fas fa-bullseye"></i> Metas/Objetivos</span>
+                        <span class="modulo-item" data-modulo="desempeno"><i class="fas fa-star"></i> Desempeño</span>
+                        <span class="modulo-item" data-modulo="9box"><i class="fas fa-th"></i> 9box/Sucesión</span>
+                        <span class="modulo-item" data-modulo="feedback"><i class="fas fa-comment"></i> Feedback Continuo</span>
+                        <span class="modulo-item" data-modulo="pdi"><i class="fas fa-road"></i> PDI</span>
+                        <span class="modulo-item" data-modulo="lms"><i class="fas fa-graduation-cap"></i> LMS</span>
+                    </div>
+                </div>
+                <div class="relaciones-grafico">
+                    <i class="fas fa-link"></i> <strong>Lógica DO:</strong> Los cursos marcados en el panel derecho alimentan la configuración de estos módulos. Pasa el mouse sobre un módulo para ver sus cursos asociados.
+                </div>
+                <!-- Botones de planificar y tips -->
+                <div class="mapa-action-buttons">
+                    <div class="mapa-plan-btn">
+                        <button class="sugerencias-btn" id="planificarBtnMapa">
+                            <i class="fas fa-calendar-alt"></i> Planificar mi aprendizaje
+                        </button>
+                    </div>
+                    <div class="mapa-tips-btn">
+                        <button class="sugerencias-btn" id="tipsBtnMapa">
+                            <i class="fas fa-lightbulb"></i> Tips y Pro-Tips
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: PLAN DE CURSOS (todo igual) -->
+            <div class="plan-panel">
+                <!-- Dashboard con cerebro -->
+                <div class="dashboard">
+                    <div class="metric"><i class="fas fa-clock"></i><div><span class="label">Base</span><div class="value" id="tiempoTotalBase">16h</div></div></div>
+                    <div class="cerebro-container">
+                        <i class="fas fa-brain cerebro-icon"></i>
+                        <span class="cerebro-progreso" id="cerebroPorcentaje">0%</span>
+                    </div>
+                    <div class="metric"><i class="fas fa-hard-hat"></i><div><span class="label">Estado</span><div class="value" id="estadoObra">En cimentación</div></div></div>
+                </div>
+
+                <!-- Controles de tiempo -->
+                <div class="control-panel">
+                    <div class="slider-group">
+                        <label>Min/curso</label>
+                        <input type="range" id="minCurso" min="20" max="60" value="40" step="5">
+                        <span id="minCursoVal">40</span>
+                    </div>
+                    <div class="modo-group">
+                        <label><input type="radio" name="modo" id="modoSemanal" checked> <i class="fas fa-calendar-week"></i> Sem</label>
+                        <label><input type="radio" name="modo" id="modoDiario"> <i class="fas fa-sun"></i> 8h/día</label>
+                    </div>
+                    <div id="grupoSemanal" class="slider-group">
+                        <label>Horas/sem</label>
+                        <input type="range" id="horasSemana" min="0.5" max="5" value="1.5" step="0.5">
+                        <span id="horasSemanaVal">1.5</span>
+                    </div>
+                    <div id="grupoDiario" class="slider-group" style="display:none;">
+                        <label>Horas/día</label>
+                        <input type="range" id="horasDia" min="1" max="8" value="8" step="1">
+                        <span id="horasDiaVal">8</span>
+                    </div>
+                    <div class="time-estimate">
+                        <i class="fas fa-ruler"></i>
+                        <span class="main" id="tiempoEstimado">4.0sem</span>
+                        <span class="sub" id="tiempoDetalle"></span>
+                    </div>
+                </div>
+
+                <!-- Barra de progreso global -->
+                <div class="progreso-principal">
+                    <i class="fas fa-drafting-compass fa-lg"></i>
+                    <div class="barra-container">
+                        <div class="barra-fondo"><div class="barra-lleno" id="barraProgreso"></div></div>
+                    </div>
+                    <span id="completados">0</span>/<span id="totalCursos">20</span> (básicos)
+                </div>
+
+                <!-- Botones de fase -->
+                <div class="fase-selectores">
+                    <button class="btn-fase" id="selectFase1"><i class="fas fa-check"></i> F1</button>
+                    <button class="btn-fase" id="selectFase2"><i class="fas fa-check"></i> F2</button>
+                    <button class="btn-fase" id="selectFase3"><i class="fas fa-check"></i> F3</button>
+                    <button class="btn-fase" id="selectFase4"><i class="fas fa-check"></i> F4</button>
+                    <button class="btn-fase" id="deselectAll"><i class="fas fa-undo"></i> Limpiar</button>
+                </div>
+
+                <!-- SECCIÓN: PLAN BÁSICO -->
+                <div class="seccion-titulo">
+                    <i class="fas fa-hard-hat"></i> Nivel Básico: "Cimientos del Éxito" · 4 fases
+                </div>
+                <div class="spoiler">
+                    <i class="fas fa-bullhorn"></i> <strong>¡Bienvenido a Rankmi Academy!</strong> Este es tu punto de partida. Aprende desde la configuración del Master hasta el lanzamiento de tus primeras evaluaciones. Pasos guiados, checklists y certificados.
+                </div>
+
+                <!-- Grid de cursos básicos (4 fases) -->
+                <div class="fases-grid" id="fasesContainerBasico">
+                    <!-- FASE 1 -->
+                    <div class="fase-card" data-fase="1">
+                        <div class="fase-header"><i class="fas fa-heart"></i><h4>F1: Corazón del Sistema</h4></div>
+                        <div class="fase-progreso-mini" id="progresoFase1"><span>0/5</span><div class="barra-fase-fondo"><div class="barra-fase-lleno"></div></div></div>
+                        <div class="curso-item" data-descripcion="Introducción a la plataforma, jerarquías y configuración inicial.">
+                            <input type="checkbox" class="curso-check" data-fase="1" data-modulo="master">
+                            <div class="curso-info"><span class="curso-nombre">Cimientos en Rankmi <span class="modulo-tag">Master</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Carga de colaboradores, edición de fichas y mantenimiento del Master.">
+                            <input type="checkbox" class="curso-check" data-fase="1" data-modulo="master">
+                            <div class="curso-info"><span class="curso-nombre">Gestión de Usuarios & Directorio <span class="modulo-tag">Master</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Creación de unidades, cargos, posiciones y centros de costos.">
+                            <input type="checkbox" class="curso-check" data-fase="1" data-modulo="jerarquia">
+                            <div class="curso-info"><span class="curso-nombre">Estructura Organizacional <span class="modulo-tag">Jerarquía</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Cómo categorizar a la dotación para obtener reportes personalizados.">
+                            <input type="checkbox" class="curso-check" data-fase="1" data-modulo="costos">
+                            <div class="curso-info"><span class="curso-nombre">Segmentos y Campos Adicionales <span class="modulo-tag">Costos</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Asignación de niveles de acceso (Admin, Consultor, Visualizador).">
+                            <input type="checkbox" class="curso-check" data-fase="1" data-modulo="roles">
+                            <div class="curso-info"><span class="curso-nombre">Roles y Permisos <span class="modulo-tag">Roles</span></span></div>
+                        </div>
+                    </div>
+
+                    <!-- FASE 2 -->
+                    <div class="fase-card" data-fase="2">
+                        <div class="fase-header"><i class="fas fa-handshake"></i><h4>F2: Conexión y Cultura</h4></div>
+                        <div class="fase-progreso-mini" id="progresoFase2"><span>0/4</span><div class="barra-fase-fondo"><div class="barra-fase-lleno"></div></div></div>
+                        <div class="curso-item" data-descripcion="Creación de la encuesta, tipos de preguntas y fechas de envío.">
+                            <input type="checkbox" class="curso-check" data-fase="2" data-modulo="clima">
+                            <div class="curso-info"><span class="curso-nombre">Clima: Configuración Inicial <span class="modulo-tag">Clima</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Monitoreo de participación y uso de la consola de administración.">
+                            <input type="checkbox" class="curso-check" data-fase="2" data-modulo="clima">
+                            <div class="curso-info"><span class="curso-nombre">Clima: El Manual del Estratega <span class="modulo-tag">Clima</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Cómo activar la cultura de retroalimentación constante en los equipos.">
+                            <input type="checkbox" class="curso-check" data-fase="2" data-modulo="feedback">
+                            <div class="curso-info"><span class="curso-nombre">Feedback Continuo <span class="modulo-tag">Feedback</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Configuración de reconocimiento, insignias y celebraciones públicas.">
+                            <input type="checkbox" class="curso-check" data-fase="2" data-modulo="reconocimiento">
+                            <div class="curso-info"><span class="curso-nombre">Reconocimiento <span class="modulo-tag">Reconocimiento</span></span></div>
+                        </div>
+                    </div>
+
+                    <!-- FASE 3 -->
+                    <div class="fase-card" data-fase="3">
+                        <div class="fase-header"><i class="fas fa-chart-line"></i><h4>F3: Gestión del Talento</h4></div>
+                        <div class="fase-progreso-mini" id="progresoFase3"><span>0/4</span><div class="barra-fase-fondo"><div class="barra-fase-lleno"></div></div></div>
+                        <div class="curso-item" data-descripcion="Carga de diccionarios de competencias y modelos de evaluación.">
+                            <input type="checkbox" class="curso-check" data-fase="3" data-modulo="desempeno">
+                            <div class="curso-info"><span class="curso-nombre">Desempeño: Competencias <span class="modulo-tag">Desempeño</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Procesos de revisión para asegurar que las notas sean justas.">
+                            <input type="checkbox" class="curso-check" data-fase="3" data-modulo="desempeno">
+                            <div class="curso-info"><span class="curso-nombre">Validación y Calibración <span class="modulo-tag">Desempeño</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Entendiendo las fórmulas de cierre y las escalas de notas.">
+                            <input type="checkbox" class="curso-check" data-fase="3" data-modulo="desempeno">
+                            <div class="curso-info"><span class="curso-nombre">Cálculo de Resultados <span class="modulo-tag">Desempeño</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Configuración de OKRs o KPIs y seguimiento de cumplimiento.">
+                            <input type="checkbox" class="curso-check" data-fase="3" data-modulo="metas">
+                            <div class="curso-info"><span class="curso-nombre">Metas (Definiendo el Norte) <span class="modulo-tag">Metas</span></span></div>
+                        </div>
+                    </div>
+
+                    <!-- FASE 4 -->
+                    <div class="fase-card" data-fase="4">
+                        <div class="fase-header"><i class="fas fa-rocket"></i><h4>F4: Operaciones y Autogestión</h4></div>
+                        <div class="fase-progreso-mini" id="progresoFase4"><span>0/4</span><div class="barra-fase-fondo"><div class="barra-fase-lleno"></div></div></div>
+                        <div class="curso-item" data-descripcion="Creación de cursos, carga de videos y gestión de alumnos.">
+                            <input type="checkbox" class="curso-check" data-fase="4" data-modulo="lms">
+                            <div class="curso-info"><span class="curso-nombre">LMS: Arquitectos del Conocimiento <span class="modulo-tag">LMS</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Configuración de solicitudes (vacaciones, permisos, certificados).">
+                            <input type="checkbox" class="curso-check" data-fase="4" data-modulo="workflows">
+                            <div class="curso-info"><span class="curso-nombre">Workflows: Autopistas Digitales <span class="modulo-tag">WF</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Gestión de contratos y anexos con validez legal.">
+                            <input type="checkbox" class="curso-check" data-fase="4" data-modulo="documentos">
+                            <div class="curso-info"><span class="curso-nombre">Documentos y Firma Digital <span class="modulo-tag">Documentos</span></span></div>
+                        </div>
+                        <div class="curso-item" data-descripcion="Publicación de vacantes y gestión básica de candidatos.">
+                            <input type="checkbox" class="curso-check" data-fase="4" data-modulo="ats">
+                            <div class="curso-info"><span class="curso-nombre">ATS: El Arquitecto de Talento <span class="modulo-tag">ATS</span></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: NIVEL AVANZADO (spoiler) -->
+                <div class="seccion-titulo" style="margin-top: 2rem;">
+                    <i class="fas fa-crown"></i> Nivel Avanzado: "EmpoderaDO" · Próximamente (3 fases)
+                </div>
+                <div class="spoiler">
+                    <i class="fas fa-eye"></i> <strong>¿Dominas la herramienta o la herramienta te domina a ti?</strong> Próximamente: Aprende a resolver crisis de data, calibrar desempeño como experto y configurar flujos que ahorren horas. <br> <span style="color:#00ffff;">Fase 2 de 2 - Spoiler:</span> Estos son los cursos que vendrán:
+                </div>
+
+                <!-- Grid de cursos avanzados (sin checkboxes) -->
+                <div class="fases-grid" style="margin-top: 1rem;">
+                    <!-- Fase Avanzada 1: Hub & Estructura -->
+                    <div class="fase-card avanzado">
+                        <div class="fase-header"><i class="fas fa-database"></i><h4>Hub: Arquitecto de Datos</h4></div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Cómo reestructurar departamentos masivamente sin perder histórico. Punto crítico: El impacto de los IDs de posición en reportes.">
+                            <div class="curso-info"><span class="curso-nombre">Arquitectura de Estructura Org.</span></div>
+                        </div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Creación de roles híbridos. Punto crítico: Auditoría de accesos para cumplimiento de protección de datos.">
+                            <div class="curso-info"><span class="curso-nombre">Seguridad y Permisos Pro</span></div>
+                        </div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Uso de campos adicionales para filtrar talento clave. Punto crítico: Errores comunes en lógica de filtros.">
+                            <div class="curso-info"><span class="curso-nombre">Segmentación Estratégica</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Fase Avanzada 2: Gestión del Talento -->
+                    <div class="fase-card avanzado">
+                        <div class="fase-header"><i class="fas fa-chart-line"></i><h4>Talento: Estratega de Desempeño</h4></div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Fórmulas personalizadas y pesos ponderados. Punto crítico: Por qué una escala mal configurada puede desmotivar.">
+                            <div class="curso-info"><span class="curso-nombre">Ingeniería de Cálculos</span></div>
+                        </div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Cómo moderar comités de calibración. Punto crítico: Detectar sesgos de benevolencia o severidad.">
+                            <div class="curso-info"><span class="curso-nombre">Calibración y Validación</span></div>
+                        </div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Uso de IA para resumir planes de acción. Punto crítico: Evitar feedback genérico.">
+                            <div class="curso-info"><span class="curso-nombre">Feedback e IA Aplicada</span></div>
+                        </div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Carga de resultados por conducta y metas en cascada. Punto crítico: Sincronización con bonos.">
+                            <div class="curso-info"><span class="curso-nombre">Metas y OKRs Dinámicos</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Fase Avanzada 3: Cultura y Experiencia -->
+                    <div class="fase-card avanzado">
+                        <div class="fase-header"><i class="fas fa-heart"></i><h4>Cultura: Guardián del Engagement</h4></div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Análisis de sentimientos en comentarios. Punto crítico: Cómo manejar resultados negativos.">
+                            <div class="curso-info"><span class="curso-nombre">Clima: El Manual de Batalla</span></div>
+                        </div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Creación de mallas curriculares por cargo. Punto crítico: Tasa de deserción en cursos.">
+                            <div class="curso-info"><span class="curso-nombre">LMS: Experiencia de Usuario</span></div>
+                        </div>
+                        <div class="curso-item avanzado" data-descripcion="Tip: Automatización de correos por etapa. Punto crítico: El embudo de conversión.">
+                            <div class="curso-info"><span class="curso-nombre">Selección: Maestro del Flujo</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer style="margin-top: 2rem;">
+                    <i class="fas fa-cube"></i> Rankmi Academy · Mapa vivo · Plan Básico + Avanzado · Foco DO
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip flotante -->
+    <div id="tooltip" class="custom-tooltip" style="display: none; position: absolute;"></div>
+
+    <script>
+        (function() {
+            // ===== LÓGICA DE MODALES =====
+            const modalInicial = document.getElementById('modalInicial');
+            const cerrarModal = document.getElementById('cerrarModal');
+            const cerrarModalBtn = document.getElementById('cerrarModalBtn');
+            function cerrarInicial() { modalInicial.style.display = 'none'; }
+            cerrarModal.addEventListener('click', cerrarInicial);
+            cerrarModalBtn.addEventListener('click', cerrarInicial);
+            modalInicial.addEventListener('click', function(e) { if (e.target === modalInicial) cerrarInicial(); });
+
+            const modalContacto = document.getElementById('modalContacto');
+            const sugerenciasBtn = document.getElementById('sugerenciasBtn');
+            const cerrarContacto = document.getElementById('cerrarModalContacto');
+            const cerrarContactoBtn = document.getElementById('cerrarModalContactoBtn');
+            function abrirContacto() { modalContacto.style.display = 'flex'; }
+            function cerrarContactoModal() { modalContacto.style.display = 'none'; }
+            sugerenciasBtn.addEventListener('click', abrirContacto);
+            cerrarContacto.addEventListener('click', cerrarContactoModal);
+            cerrarContactoBtn.addEventListener('click', cerrarContactoModal);
+            modalContacto.addEventListener('click', function(e) { if (e.target === modalContacto) cerrarContactoModal(); });
+
+            const modalOnboarding = document.getElementById('modalOnboarding');
+            const onboardingBtn = document.getElementById('onboardingBtn');
+            const cerrarOnboarding = document.getElementById('cerrarModalOnboarding');
+            const cerrarOnboardingBtn = document.getElementById('cerrarModalOnboardingBtn');
+            onboardingBtn.addEventListener('click', () => modalOnboarding.style.display = 'flex');
+            cerrarOnboarding.addEventListener('click', () => modalOnboarding.style.display = 'none');
+            cerrarOnboardingBtn.addEventListener('click', () => modalOnboarding.style.display = 'none');
+            modalOnboarding.addEventListener('click', (e) => { if (e.target === modalOnboarding) modalOnboarding.style.display = 'none'; });
+
+            const modalInducciones = document.getElementById('modalInducciones');
+            const induccionesBtn = document.getElementById('induccionesBtn');
+            const cerrarInducciones = document.getElementById('cerrarModalInducciones');
+            const cerrarInduccionesBtn = document.getElementById('cerrarModalInduccionesBtn');
+            induccionesBtn.addEventListener('click', () => modalInducciones.style.display = 'flex');
+            cerrarInducciones.addEventListener('click', () => modalInducciones.style.display = 'none');
+            cerrarInduccionesBtn.addEventListener('click', () => modalInducciones.style.display = 'none');
+            modalInducciones.addEventListener('click', (e) => { if (e.target === modalInducciones) modalInducciones.style.display = 'none'; });
+
+            const modalOdoo = document.getElementById('modalOdoo');
+            const odooBtn = document.getElementById('odooBtn');
+            const cerrarOdoo = document.getElementById('cerrarModalOdoo');
+            const cerrarOdooBtn = document.getElementById('cerrarModalOdooBtn');
+            odooBtn.addEventListener('click', () => modalOdoo.style.display = 'flex');
+            cerrarOdoo.addEventListener('click', () => modalOdoo.style.display = 'none');
+            cerrarOdooBtn.addEventListener('click', () => modalOdoo.style.display = 'none');
+            modalOdoo.addEventListener('click', (e) => { if (e.target === modalOdoo) modalOdoo.style.display = 'none'; });
+
+            const modalTickets = document.getElementById('modalTickets');
+            const ticketsBtn = document.getElementById('ticketsBtn');
+            const cerrarTickets = document.getElementById('cerrarModalTickets');
+            const cerrarTicketsBtn = document.getElementById('cerrarModalTicketsBtn');
+            ticketsBtn.addEventListener('click', () => modalTickets.style.display = 'flex');
+            cerrarTickets.addEventListener('click', () => modalTickets.style.display = 'none');
+            cerrarTicketsBtn.addEventListener('click', () => modalTickets.style.display = 'none');
+            modalTickets.addEventListener('click', (e) => { if (e.target === modalTickets) modalTickets.style.display = 'none'; });
+
+            // Modal tips (nuevo)
+            const modalTips = document.getElementById('modalTips');
+            const tipsBtnMapa = document.getElementById('tipsBtnMapa');
+            const cerrarTips = document.getElementById('cerrarModalTips');
+            const cerrarTipsBtn = document.getElementById('cerrarModalTipsBtn');
+            tipsBtnMapa.addEventListener('click', () => modalTips.style.display = 'flex');
+            cerrarTips.addEventListener('click', () => modalTips.style.display = 'none');
+            cerrarTipsBtn.addEventListener('click', () => modalTips.style.display = 'none');
+            modalTips.addEventListener('click', (e) => { if (e.target === modalTips) modalTips.style.display = 'none'; });
+
+            // Modal plan
+            const modalPlan = document.getElementById('modalPlan');
+            const planificarBtnMapa = document.getElementById('planificarBtnMapa');
+            const cerrarPlan = document.getElementById('cerrarModalPlan');
+            planificarBtnMapa.addEventListener('click', () => modalPlan.style.display = 'flex');
+            cerrarPlan.addEventListener('click', () => modalPlan.style.display = 'none');
+            modalPlan.addEventListener('click', (e) => { if (e.target === modalPlan) modalPlan.style.display = 'none'; });
+
+            // ===== FECHA Y HORA ACTUAL =====
+            function actualizarFechaHora() {
+                const ahora = new Date();
+                const opciones = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                document.getElementById('fechaHora').textContent = ahora.toLocaleDateString('es-CL', opciones).replace(',', '');
+            }
+            actualizarFechaHora();
+            setInterval(actualizarFechaHora, 1000);
+
+            // ===== LÓGICA DE CURSOS BÁSICOS =====
+            const checkboxes = Array.from(document.querySelectorAll('.curso-check'));
+            const totalCursos = checkboxes.length; // 20
+            document.getElementById('totalCursos').textContent = totalCursos;
+
+            const minCursoSlider = document.getElementById('minCurso');
+            const minCursoVal = document.getElementById('minCursoVal');
+            const horasSemanaSlider = document.getElementById('horasSemana');
+            const horasSemanaVal = document.getElementById('horasSemanaVal');
+            const horasDiaSlider = document.getElementById('horasDia');
+            const horasDiaVal = document.getElementById('horasDiaVal');
+            const grupoSemanal = document.getElementById('grupoSemanal');
+            const grupoDiario = document.getElementById('grupoDiario');
+            const modoSemanal = document.getElementById('modoSemanal');
+            const modoDiario = document.getElementById('modoDiario');
+            const tiempoEstimadoSpan = document.getElementById('tiempoEstimado');
+            const tiempoDetalleSpan = document.getElementById('tiempoDetalle');
+            const tiempoTotalBase = document.getElementById('tiempoTotalBase');
+            const estadoObra = document.getElementById('estadoObra');
+            const barraProgreso = document.getElementById('barraProgreso');
+            const completadosSpan = document.getElementById('completados');
+            const cerebroPorcentaje = document.getElementById('cerebroPorcentaje');
+
+            const fases = [1,2,3,4];
+            const faseCheckboxes = {};
+            fases.forEach(f => faseCheckboxes[f] = checkboxes.filter(cb => cb.dataset.fase == f));
+            const faseBarras = {
+                1: document.querySelector('#progresoFase1 .barra-fase-lleno'),
+                2: document.querySelector('#progresoFase2 .barra-fase-lleno'),
+                3: document.querySelector('#progresoFase3 .barra-fase-lleno'),
+                4: document.querySelector('#progresoFase4 .barra-fase-lleno')
+            };
+            const faseTextos = {
+                1: document.querySelector('#progresoFase1 span'),
+                2: document.querySelector('#progresoFase2 span'),
+                3: document.querySelector('#progresoFase3 span'),
+                4: document.querySelector('#progresoFase4 span')
+            };
+
+            const moduloItems = document.querySelectorAll('.modulo-item');
+
+            function actualizarProgresoFases() {
+                fases.forEach(f => {
+                    const total = faseCheckboxes[f].length;
+                    const completados = faseCheckboxes[f].filter(cb => cb.checked).length;
+                    const porcentaje = total ? (completados/total)*100 : 0;
+                    if (faseBarras[f]) faseBarras[f].style.width = porcentaje + '%';
+                    if (faseTextos[f]) faseTextos[f].textContent = `${completados}/${total}`;
+                });
+            }
+
+            function formatearTiempo(unidades, tipo) {
+                if (tipo === 'semana') {
+                    if (unidades < 1) return { main: `${(unidades*7).toFixed(1)}d`, detalle: `${(unidades*7).toFixed(1)} días` };
+                    if (unidades < 4) return { main: `${unidades.toFixed(1)}sem`, detalle: `${unidades.toFixed(1)} semanas` };
+                    if (unidades < 52) return { main: `${(unidades/4.33).toFixed(1)}m`, detalle: `${(unidades/4.33).toFixed(1)} meses` };
+                    return { main: `${(unidades/52).toFixed(1)}a`, detalle: `${(unidades/52).toFixed(1)} años` };
+                } else {
+                    if (unidades < 1) return { main: `${(unidades*8).toFixed(1)}h`, detalle: `${(unidades*8).toFixed(1)} horas` };
+                    if (unidades < 7) return { main: `${unidades.toFixed(1)}d`, detalle: `${unidades.toFixed(1)} días` };
+                    if (unidades < 30) return { main: `${(unidades/7).toFixed(1)}sem`, detalle: `${(unidades/7).toFixed(1)} semanas` };
+                    if (unidades < 365) return { main: `${(unidades/30).toFixed(1)}m`, detalle: `${(unidades/30).toFixed(1)} meses` };
+                    return { main: `${(unidades/365).toFixed(1)}a`, detalle: `${(unidades/365).toFixed(1)} años` };
+                }
+            }
+
+            function actualizarTodo() {
+                const minPorCurso = parseInt(minCursoSlider.value);
+                minCursoVal.textContent = minPorCurso;
+
+                const totalHoras = (totalCursos * minPorCurso) / 60;
+                tiempoTotalBase.innerHTML = totalHoras.toFixed(1) + 'h';
+
+                const completados = checkboxes.filter(cb => cb.checked).length;
+                const pendientes = totalCursos - completados;
+                const horasRestantes = (pendientes * minPorCurso) / 60;
+
+                let tiempoFormateado = { main: '0', detalle: '' };
+                if (modoSemanal.checked) {
+                    const horasSem = parseFloat(horasSemanaSlider.value);
+                    horasSemanaVal.textContent = horasSem.toFixed(1);
+                    tiempoFormateado = formatearTiempo(horasRestantes / horasSem, 'semana');
+                } else {
+                    const horasDia = parseFloat(horasDiaSlider.value);
+                    horasDiaVal.textContent = horasDia;
+                    tiempoFormateado = formatearTiempo(horasRestantes / horasDia, 'dia');
+                }
+
+                tiempoEstimadoSpan.textContent = tiempoFormateado.main;
+                tiempoDetalleSpan.textContent = tiempoFormateado.detalle;
+
+                if (completados === 0) estadoObra.textContent = 'En cimentación';
+                else if (completados === totalCursos) estadoObra.textContent = 'Obra terminada';
+                else if (completados < totalCursos/3) estadoObra.textContent = 'Cimientos';
+                else if (completados < 2*totalCursos/3) estadoObra.textContent = 'Estructura';
+                else estadoObra.textContent = 'Detalles finales';
+
+                const porcentaje = (completados / totalCursos) * 100;
+                barraProgreso.style.width = porcentaje + '%';
+                completadosSpan.textContent = completados;
+
+                cerebroPorcentaje.textContent = Math.round(porcentaje) + '%';
+
+                actualizarProgresoFases();
+            }
+
+            function toggleModo() {
+                if (modoSemanal.checked) {
+                    grupoSemanal.style.display = 'flex';
+                    grupoDiario.style.display = 'none';
+                } else {
+                    grupoSemanal.style.display = 'none';
+                    grupoDiario.style.display = 'flex';
+                }
+                actualizarTodo();
+            }
+
+            minCursoSlider.addEventListener('input', actualizarTodo);
+            horasSemanaSlider.addEventListener('input', actualizarTodo);
+            horasDiaSlider.addEventListener('input', actualizarTodo);
+            modoSemanal.addEventListener('change', toggleModo);
+            modoDiario.addEventListener('change', toggleModo);
+            checkboxes.forEach(cb => cb.addEventListener('change', actualizarTodo));
+
+            document.getElementById('selectFase1').addEventListener('click', () => {
+                faseCheckboxes[1].forEach(cb => cb.checked = true);
+                actualizarTodo();
+            });
+            document.getElementById('selectFase2').addEventListener('click', () => {
+                faseCheckboxes[2].forEach(cb => cb.checked = true);
+                actualizarTodo();
+            });
+            document.getElementById('selectFase3').addEventListener('click', () => {
+                faseCheckboxes[3].forEach(cb => cb.checked = true);
+                actualizarTodo();
+            });
+            document.getElementById('selectFase4').addEventListener('click', () => {
+                faseCheckboxes[4].forEach(cb => cb.checked = true);
+                actualizarTodo();
+            });
+            document.getElementById('deselectAll').addEventListener('click', () => {
+                checkboxes.forEach(cb => cb.checked = false);
+                actualizarTodo();
+            });
+
+            moduloItems.forEach(item => {
+                item.addEventListener('mouseenter', (e) => {
+                    const modulo = e.currentTarget.dataset.modulo;
+                    checkboxes.forEach(cb => {
+                        if (cb.dataset.modulo === modulo) {
+                            cb.closest('.curso-item').style.backgroundColor = '#ff820030';
+                            cb.closest('.curso-item').style.borderLeftColor = '#ffffff';
+                        }
+                    });
+                });
+                item.addEventListener('mouseleave', () => {
+                    checkboxes.forEach(cb => {
+                        cb.closest('.curso-item').style.backgroundColor = '';
+                        cb.closest('.curso-item').style.borderLeftColor = '';
+                    });
+                });
+            });
+
+            // ========== TOOLTIPS ==========
+            const tooltip = document.getElementById('tooltip');
+            const todosLosCursos = document.querySelectorAll('.curso-item');
+
+            todosLosCursos.forEach(curso => {
+                curso.addEventListener('mouseenter', (e) => {
+                    const descripcion = curso.getAttribute('data-descripcion');
+                    if (!descripcion) return;
+
+                    tooltip.innerHTML = `<i class="fas fa-info-circle"></i> ${descripcion}`;
+                    tooltip.style.display = 'block';
+                    tooltip.style.left = (e.pageX + 15) + 'px';
+                    tooltip.style.top = (e.pageY - 30) + 'px';
+                });
+
+                curso.addEventListener('mousemove', (e) => {
+                    tooltip.style.left = (e.pageX + 15) + 'px';
+                    tooltip.style.top = (e.pageY - 30) + 'px';
+                });
+
+                curso.addEventListener('mouseleave', () => {
+                    tooltip.style.display = 'none';
+                });
+            });
+
+            // ===== PLANIFICADOR (con tips internos y export sin columna de recomendaciones) =====
+            const generarPlanBtn = document.getElementById('generarPlanBtn');
+            const planResultado = document.getElementById('planResultado');
+            const exportarPlanBtn = document.getElementById('exportarPlanBtn');
+            const fechaInicioPlan = document.getElementById('fechaInicioPlan');
+            const intensidadPlan = document.getElementById('intensidadPlan');
+            const soloPendientes = document.getElementById('soloPendientes');
+
+            function normalizarTexto(texto) {
+                return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            }
+
+            // Texto de tips motivacionales (normalizado)
+            const tipsMotivacionales = normalizarTexto(`
+                <h3><i class="fas fa-hard-hat"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Exito"</h3>
+                <p><strong>1. Gestion de Agenda (El Blindaje de Valor)</strong><br>
+                Tip: Reserva tus martes y jueves de 9:00 AM a 10:00 AM. Es el momento ideal para aprovechar tu maxima energia mental antes de iniciar la jornada operativa.<br>
+                Pro-Tip: Implementa el "Time Box de Enfoque". Si el curso dura 40 min, agenda 60 min. Usa esos 20 min extra para aplicar lo aprendido inmediatamente en un caso real de tus proyectos actuales.<br>
+                Recomendacion: Manten tu calendario como "Ocupado" o "Tiempo de Enfoque". Asi aseguras que este espacio de crecimiento sea respetado como una prioridad estrategica.</p>
+
+                <p><strong>2. Prioridad: Excelencia en el Servicio a traves del Aprendizaje</strong><br>
+                Tip: Mira cada curso como el proceso de "afilar la sierra". Estar actualizado en la configuracion del ATS te permite ofrecer soluciones mas rapidas y precisas a tus clientes.<br>
+                Pro-Tip: Regla de "Mente Despejada". Atiende tus pendientes criticos antes de iniciar. Al entrar al curso con la bandeja organizada, tu capacidad de retencion tecnica fluye al maximo.</p>
+
+                <p><strong>3. Ejecucion Tecnica (Nivel Experto)</strong><br>
+                Tip: Practica en tiempo real con Pantalla Dividida. Ten la Academy a un lado y el Ambiente de Pruebas al otro. La maestria se alcanza haciendo mientras descubres.<br>
+                Pro-Tip: Documenta tus "Ganancias de Eficiencia". Anota cuanto tiempo ahorraras en futuras tareas gracias a lo aprendido. Cuantificar tu agilidad es el mejor motor de motivacion.</p>
+
+                <p><strong>4. Mentalidad de Crecimiento (Mindset)</strong><br>
+                Tip: El dominio total de la plataforma construye tu Autoridad Profesional. La seguridad tecnica se proyecta como confianza ante el cliente.<br>
+                Pro-Tip: Evoluciona de Usuario a Arquitecto. Mientras el usuario conoce el proceso, el Arquitecto comprende como cada configuracion potencia el clima organizacional y la productividad.</p>
+
+                <p><strong>📝 Contenido para tu Celda de "Recomendaciones de Exito"</strong><br>
+                Puedes copiar y pegar esto en una pestana de "Reglas de Oro" en tu Excel:</p>
+                <ul>
+                    <li><strong>Cero Reuniones:</strong> Prohibido tomar llamadas durante los 40 min del curso.</li>
+                    <li><strong>Preparacion de Obra:</strong> Ten a mano los manuales de producto de Rankmi para profundizar.</li>
+                    <li><strong>Planificacion Bimestral:</strong> Si te saltas una semana, recupera los 2 cursos el viernes. No dejes que la "deuda tecnica" se acumule al Mes 2.</li>
+                    <li><strong>Prioridad 1:</strong> El cliente es primero, pero el aprendizaje es el que garantiza que el cliente tenga exito. Sin aprendizaje no hay escalabilidad.</li>
+                </ul>
+            `);
+
+            function obtenerCursosOrdenados() {
+                const fasesContainer = document.getElementById('fasesContainerBasico');
+                const faseCards = fasesContainer.querySelectorAll('.fase-card');
+                const cursos = [];
+                faseCards.forEach(faseCard => {
+                    const fase = faseCard.dataset.fase;
+                    const items = faseCard.querySelectorAll('.curso-item');
+                    items.forEach(item => {
+                        const checkbox = item.querySelector('.curso-check');
+                        if (checkbox) {
+                            const nombre = item.querySelector('.curso-nombre').cloneNode(true);
+                            const moduloTag = nombre.querySelector('.modulo-tag');
+                            if (moduloTag) moduloTag.remove();
+                            const nombreTexto = nombre.textContent.trim();
+                            cursos.push({
+                                fase: parseInt(fase),
+                                nombre: nombreTexto,
+                                checkbox: checkbox,
+                                modulo: checkbox.dataset.modulo
+                            });
+                        }
+                    });
+                });
+                return cursos;
+            }
+
+            function generarPlan() {
+                const fechaInicio = new Date(fechaInicioPlan.value + 'T00:00:00');
+                if (isNaN(fechaInicio)) {
+                    alert('Selecciona una fecha de inicio válida.');
+                    return;
+                }
+
+                const intensidad = intensidadPlan.value;
+                let cursosPorDia = intensidad === 'ligera' ? 1 : intensidad === 'media' ? 2 : 4;
+
+                let cursos = obtenerCursosOrdenados();
+                if (soloPendientes.checked) {
+                    cursos = cursos.filter(c => !c.checkbox.checked);
+                }
+
+                if (cursos.length === 0) {
+                    planResultado.innerHTML = '<p>No hay cursos pendientes para planificar.</p>';
+                    exportarPlanBtn.style.display = 'none';
+                    return;
+                }
+
+                // Distribuir en días (saltando fines de semana)
+                const plan = [];
+                let diaActual = new Date(fechaInicio);
+                let index = 0;
+                while (index < cursos.length) {
+                    while (diaActual.getDay() === 0 || diaActual.getDay() === 6) {
+                        diaActual.setDate(diaActual.getDate() + 1);
+                    }
+                    const fechaStr = diaActual.toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                    for (let i = 0; i < cursosPorDia && index < cursos.length; i++) {
+                        plan.push({
+                            fecha: fechaStr,
+                            curso: cursos[index].nombre,
+                            fase: cursos[index].fase
+                        });
+                        index++;
+                    }
+                    diaActual.setDate(diaActual.getDate() + 1);
+                }
+
+                const minPorCurso = parseInt(minCursoSlider.value);
+                const tiempoEstimadoHoras = (minPorCurso / 60).toFixed(1) + ' h';
+
+                // Mostrar tabla con Fecha, Curso, Fase, Tiempo estimado
+                let htmlTabla = '<table class="tabla-plan"><tr><th>Fecha</th><th>Curso</th><th>Fase</th><th>Tiempo estimado</th></tr>';
+                plan.forEach(p => {
+                    htmlTabla += `<tr><td>${p.fecha}</td><td>${p.curso}</td><td>F${p.fase}</td><td>${tiempoEstimadoHoras}</td></tr>`;
+                });
+                htmlTabla += '</table>';
+
+                // Añadir bloque de tips motivacionales
+                const htmlCompleto = htmlTabla + '<div class="tips-block">' + tipsMotivacionales + '</div>';
+                planResultado.innerHTML = htmlCompleto;
+                exportarPlanBtn.style.display = 'inline-block';
+
+                // Preparar exportación a Excel (SIN columna de recomendaciones)
+                let tablaExcel = `
+                    <table>
+                        <tr><th>Fecha</th><th>Curso</th><th>Fase</th><th>Tiempo estimado (h)</th><th>Tiempo real (para llenar)</th></tr>
+                `;
+                plan.forEach(p => {
+                    const cursoSinAcentos = normalizarTexto(p.curso);
+                    tablaExcel += `<tr>
+                        <td>${p.fecha}</td>
+                        <td>${cursoSinAcentos}</td>
+                        <td>F${p.fase}</td>
+                        <td>${tiempoEstimadoHoras}</td>
+                        <td></td>
+                    </tr>`;
+                });
+                tablaExcel += '</table>';
+
+                exportarPlanBtn.onclick = () => {
+                    const blob = new Blob([tablaExcel], { type: 'application/vnd.ms-excel' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'plan_aprendizaje.xls';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                };
+            }
+
+            generarPlanBtn.addEventListener('click', generarPlan);
+
+            toggleModo();
+            actualizarTodo();
+        })();
+    </script>
+</body>
+</html>
