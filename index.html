@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Mantenemos todos los estilos anteriores y añadimos algunos nuevos */
+        /* ========== ESTILOS ORIGINALES (sin cambios) ========== */
         * {
             margin: 0;
             padding: 0;
@@ -53,7 +53,6 @@
             border: 1px solid rgba(0, 255, 255, 0.15);
         }
 
-        /* Header reorganizado en dos filas con texto explicativo */
         .suite-header {
             display: flex;
             flex-direction: column;
@@ -115,7 +114,6 @@
             gap: 0.8rem;
         }
 
-        /* Botones de acción con texto de acceso rápido */
         .action-header {
             display: flex;
             align-items: center;
@@ -166,7 +164,6 @@
             color: #001a3d;
         }
 
-        /* Credenciales de acceso */
         .credenciales {
             background: #001a3d;
             border: 1px solid #ff8200;
@@ -191,7 +188,6 @@
             font-weight: 600;
         }
 
-        /* Layout de 2 columnas */
         .arquitectura-layout {
             display: grid;
             grid-template-columns: 1fr 1.8fr;
@@ -199,7 +195,7 @@
             margin-top: 1rem;
         }
 
-        /* ===== PANEL IZQUIERDO: MAPA ===== */
+        /* PANEL IZQUIERDO: MAPA */
         .mapa-panel {
             background: rgba(0, 20, 50, 0.7);
             border: 1px solid #00ffff40;
@@ -284,7 +280,6 @@
             margin-right: 4px;
         }
 
-        /* Botones de acción en el mapa */
         .mapa-action-buttons {
             margin-top: 1.5rem;
             display: flex;
@@ -309,7 +304,7 @@
             color: #001a3d;
         }
 
-        /* ===== PANEL DERECHO: PLAN DE CURSOS ===== */
+        /* PANEL DERECHO: PLAN DE CURSOS */
         .plan-panel {
             background: rgba(0, 30, 60, 0.7);
             border: 1px solid #ff8200;
@@ -367,7 +362,6 @@
             font-weight: 700;
             color: #00ffff;
         }
-        /* NUEVO: Badge de clientes empoderados - AHORA CON DISPLAY NONE POR DEFECTO */
         .empoderado-badge {
             position: absolute;
             top: -10px;
@@ -380,7 +374,7 @@
             font-weight: bold;
             border: 2px solid #00ffff;
             white-space: nowrap;
-            display: none; /* OCULTO por defecto, se muestra solo cuando corresponda */
+            display: none;
         }
 
         .control-panel {
@@ -727,7 +721,6 @@
             border-color: #ff8200;
         }
 
-        /* Para el modal de contacto, más pequeño */
         .modal-contacto .modal-content {
             max-width: 400px;
             text-align: center;
@@ -782,7 +775,6 @@
             margin-top: 1rem;
         }
 
-        /* Bloque de tips motivacionales (reutilizado) */
         .tips-block {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -812,7 +804,6 @@
                 grid-template-columns: 1fr;
             }
         }
-        /* NUEVA: Animación para el botón destacado */
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 #00ffff; }
             70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
@@ -824,7 +815,7 @@
     </style>
 </head>
 <body>
-    <!-- MODAL INICIAL (totalmente intacto, solo actualizada la lista de personas) -->
+    <!-- MODAL INICIAL (sin cambios) -->
     <div id="modalInicial" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" id="cerrarModal">&times;</button>
@@ -846,19 +837,14 @@
             </ul>
             <p>Este portal es el <strong>cerebro del conocimiento</strong> que estamos construyendo juntos para que puedas ser parte de esto. Cada curso que completes llenará de información este cerebro, reduciendo la brecha de entendimiento y empoderando a clientes, consultores y PMs.</p>
             <p style="font-weight: bold; color: #00ffff; border-top: 1px solid #ff8200; padding-top: 1rem;">✨ Todo esto, con el objetivo de <strong>mejorar la eficiencia de la operación y empoderar a clientes</strong>. La evolución continúa, que nos caracteriza en pertenecer a RANKMI.</p>
-            
-            <!-- Texto ACTUALIZADO con la lista completa de personas (incluye Julie y Valentina) -->
             <p><strong>Teniendo el contexto y antes de avanzar, es importante destacar que lo que veremos a continuación de cada iniciativa no habría sido posible sin el aporte de las siguientes personas:</strong> Fernanda Riffo, Eileen Ponce, Evelyn Neira, Julie Creissent, Valentina Figueroa, Enzo Marambio y Emmanuel Nahin.</p>
             <p>Durante los meses más duros, especialmente en el período Q4–Q1, ellos dedicaron tiempo valioso fuera de sus roles habituales (que ya implican una alta carga de trabajo con clientes y procesos) para apoyar directamente en la operación y en la construcción de este plan.</p>
             <p>Gracias a ese esfuerzo adicional, hoy contamos con un camino ya iniciado que nos permitirá aprovechar la época de menor demanda para consolidar y mejorar lo construido, integrando a todos en este proceso.</p>
-            
-            <!-- ELIMINADO: El mensaje "PROYECTO EMPODERADO" que estaba aquí abajo -->
-            
             <button class="modal-btn" id="cerrarModalBtn">¡Comenzar a construir!</button>
         </div>
     </div>
 
-    <!-- MODAL DE CONTACTO (sugerencias) -->
+    <!-- MODAL DE CONTACTO -->
     <div id="modalContacto" class="modal-overlay" style="display: none;">
         <div class="modal-content modal-contacto">
             <button class="modal-close" id="cerrarModalContacto">&times;</button>
@@ -875,7 +861,7 @@
         </div>
     </div>
 
-    <!-- MODAL ONBOARDING TRANSVERSAL -->
+    <!-- MODAL ONBOARDING -->
     <div id="modalOnboarding" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <button class="modal-close" id="cerrarModalOnboarding">&times;</button>
@@ -908,7 +894,7 @@
         </div>
     </div>
 
-    <!-- MODAL TICKETS: SOPORTE INTERNO -->
+    <!-- MODAL TICKETS -->
     <div id="modalTickets" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <button class="modal-close" id="cerrarModalTickets">&times;</button>
@@ -922,13 +908,12 @@
         </div>
     </div>
 
-    <!-- MODAL TIPS (nuevo, con los tips motivacionales) -->
+    <!-- MODAL TIPS -->
     <div id="modalTips" class="modal-overlay" style="display: none;">
         <div class="modal-content" style="max-width: 700px;">
             <button class="modal-close" id="cerrarModalTips">&times;</button>
             <h2><i class="fas fa-lightbulb"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Éxito"</h2>
             <div class="tips-block" style="margin-top:0; border:none; background:transparent; padding:0;">
-                <!-- Contenido insertado por JS, pero lo pondremos directamente aquí para evitar duplicar lógica -->
                 <h3><i class="fas fa-hard-hat"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Exito"</h3>
                 <p><strong>1. Gestion de Agenda (El Blindaje de Valor)</strong><br>
                 Tip: Reserva tus martes y jueves de 9:00 AM a 10:00 AM. Es el momento ideal para aprovechar tu maxima energia mental antes de iniciar la jornada operativa.<br>
@@ -960,42 +945,33 @@
         </div>
     </div>
 
-    <!-- MODAL PLANIFICADOR (con tips internos) -->
+    <!-- MODAL PLANIFICADOR (MODIFICADO: siempre con fecha inicio y fin, sin opción de intensidad manual) -->
     <div id="modalPlan" class="modal-overlay" style="display: none;">
         <div class="modal-content" style="max-width: 800px;">
             <button class="modal-close" id="cerrarModalPlan">&times;</button>
             <h2><i class="fas fa-calendar-plus"></i> Planifica tu aprendizaje</h2>
             <div class="plan-opciones">
                 <label>Fecha de inicio: <input type="date" id="fechaInicioPlan" value="2025-03-01"></label>
-                <label>Intensidad:
-                    <select id="intensidadPlan">
-                        <option value="ligera">Ligera (1 curso/día)</option>
-                        <option value="media" selected>Media (2 cursos/día)</option>
-                        <option value="extrema">Extrema (4 cursos/día)</option>
-                    </select>
-                </label>
+                <label>Fecha fin (máx. 60 días): <input type="date" id="fechaLimitePlan"></label>
+                <label><input type="checkbox" id="incluirFinde"> Incluir fines de semana (días hábiles = todos)</label>
                 <label><input type="checkbox" id="soloPendientes" checked> Incluir solo cursos pendientes (según checkboxes)</label>
+                <div id="infoIntensidadCalculada" style="margin-top: 0.5rem; font-style: italic; color: #00ffff;"></div>
+                <div id="errorFechaLimite" style="color: #ff8200; font-weight: bold; display: none;">La diferencia entre fechas no puede ser mayor a 60 días.</div>
             </div>
             <button class="modal-btn" id="generarPlanBtn">Generar plan</button>
-            <div id="planResultado" style="margin-top: 1.5rem; max-height: 400px; overflow-y: auto;">
-                <!-- Aquí se insertará la tabla del plan y luego los tips -->
-            </div>
+            <div id="planResultado" style="margin-top: 1.5rem; max-height: 400px; overflow-y: auto;"></div>
             <button class="export-btn" id="exportarPlanBtn" style="display:none;">Exportar como Excel</button>
         </div>
     </div>
 
-    <!-- NUEVO MODAL: EMPODERADO (detalle completo) -->
+    <!-- MODAL EMPODERADO -->
     <div id="modalEmpoderaDO" class="modal-overlay" style="display: none;">
         <div class="modal-content" style="max-width: 800px;">
             <button class="modal-close" id="cerrarModalEmpoderaDO">&times;</button>
-            
-            <!-- Título con Corona -->
             <h2 style="display: flex; align-items: center; gap: 10px;">
                 <i class="fas fa-crown" style="color: #ff8200;"></i> 
                 Proyecto EmpoderaDO: La Autonomía del Cliente
             </h2>
-
-            <!-- RECONOCIMIENTO DESTACADO (Valentina y Julie) -->
             <div style="background: linear-gradient(145deg, #ff820020, #00ffff10); border: 2px solid #ff8200; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; text-align: center;">
                 <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">✨ <strong>Proyecto liderado y construido por:</strong></p>
                 <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; font-size: 1.6rem; font-weight: 700; color: #00ffff; margin: 1rem 0;">
@@ -1004,15 +980,11 @@
                 </div>
                 <p style="color: #a0cfef;">Su visión transforma la operación diaria en una máquina de eficiencia y autonomía.</p>
             </div>
-
-            <!-- ¿QUÉ ES? (Introducción) -->
             <div style="background: #001a3d; border-radius: 1.5rem; padding: 1.2rem; margin-bottom: 1.5rem;">
                 <p><i class="fas fa-question-circle" style="color:#ff8200;"></i> <strong>¿Qué es?</strong> Un nuevo modelo de autogestión para clientes, donde asumen total autonomía sobre sus procesos mediante la metodología <em>learning by doing</em> (Rankmi Academy, Odoo, IA).</p>
                 <p><i class="fas fa-bullseye" style="color:#ff8200;"></i> <strong>Finalidad:</strong> Que el Project Manager/Consultor pase de ser un "operador" a un "asesor estratégico". El cliente se empodera, y nosotros ganamos eficiencia.</p>
                 <p><i class="fas fa-users" style="color:#ff8200;"></i> <strong>Proyecto de Equipo:</strong> Una herramienta colectiva para liderar la relación con la cartera con mayor libertad y mejores resultados.</p>
             </div>
-
-            <!-- MÉTRICAS CLAVE (Q1 2026) -->
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-bottom: 1.5rem;">
                 <div style="background: #002856; border-radius: 1rem; padding: 1rem; text-align: center;">
                     <i class="fas fa-building" style="color: #ff8200; font-size: 1.5rem;"></i>
@@ -1035,8 +1007,6 @@
                     <div style="font-size: 0.7rem;">Horas de formación</div>
                 </div>
             </div>
-
-            <!-- REQUISITOS PARA CLIENTES (Checklist) -->
             <div style="border: 1px dashed #00ffff; border-radius: 1.5rem; padding: 1rem; margin-bottom: 1.5rem;">
                 <p><i class="fas fa-clipboard-check" style="color:#ff8200;"></i> <strong>Requisitos para transformar a un cliente:</strong></p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
@@ -1048,8 +1018,6 @@
                     <span><i class="fas fa-check-circle" style="color:#00ffff;"></i> Clientes nuevos (desde Ago 2025) ingresan directo</span>
                 </div>
             </div>
-
-            <!-- PASO A PASO RESUMIDO -->
             <div style="background: #ff820010; border-radius: 1.5rem; padding: 1rem; margin-bottom: 1.5rem;">
                 <p><i class="fas fa-steps" style="color:#ff8200;"></i> <strong>Implementación en 8 pasos:</strong></p>
                 <ol style="columns: 2; column-gap: 2rem; margin-left: 1.2rem;">
@@ -1063,8 +1031,6 @@
                     <li>Traspaso a Servicio y CSM</li>
                 </ol>
             </div>
-
-            <!-- ENLACES RÁPIDOS (LOS QUE ME DISTE) -->
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 2rem 0;">
                 <a href="https://rankmi.odoo.com/knowledge/article/2882" target="_blank" class="sugerencias-btn" style="background: #ff8200; color: #001a3d; text-decoration: none; font-size: 1rem;">
                     <i class="fas fa-book-open"></i> Guía completa en Odoo
@@ -1073,16 +1039,13 @@
                     <i class="fas fa-chart-pie"></i> Ver presentación PPT
                 </a>
             </div>
-
-            <!-- BOTÓN DE CIERRE -->
             <button class="modal-btn" id="cerrarModalEmpoderaDOBtn" style="width: 100%;">Cerrar</button>
         </div>
     </div>
 
+    <!-- CONTENEDOR PRINCIPAL -->
     <div class="container">
-        <!-- Header reorganizado en dos filas con texto explicativo -->
         <div class="suite-header">
-            <!-- Primera fila: enlaces externos y badge de fecha -->
             <div class="header-row">
                 <div class="header-links">
                     <a href="https://proyect-full-suite.pages.dev" target="_blank" class="header-link">
@@ -1100,7 +1063,6 @@
                     <span id="fechaHora" style="font-family: monospace; background:#001a3d; padding:0.2rem 0.5rem; border-radius:20px;"></span>
                 </div>
             </div>
-            <!-- Segunda fila: texto explicativo + botones de iniciativas + NUEVO BOTÓN EMPODERADO -->
             <div class="header-row">
                 <div class="action-header">
                     <span>🔍 Ingresa para ver iniciativas o información:</span>
@@ -1117,7 +1079,6 @@
                         <button class="sugerencias-btn outline" id="ticketsBtn">
                             <i class="fas fa-ticket-alt"></i> Tickets: Soporte interno
                         </button>
-                        <!-- NUEVO BOTÓN EMPODERADO (destacado) -->
                         <button class="sugerencias-btn" id="empoderaDOBtn" style="background: #00ffff; color: #001a3d; border-color: #ff8200;" class="pulse-animation">
                             <i class="fas fa-crown"></i> 🚀 Proyecto EmpoderaDO
                         </button>
@@ -1129,19 +1090,16 @@
             </div>
         </div>
 
-        <!-- Credenciales de acceso -->
         <div class="credenciales">
             <i class="fas fa-graduation-cap"></i> Los cursos están en <strong>academy.rankmi.com</strong> · Usuario: <span>correo empresa</span> · Contraseña inicial: <span>12345</span>
         </div>
 
-        <!-- Layout de 2 columnas -->
         <div class="arquitectura-layout">
-            <!-- COLUMNA IZQUIERDA: MAPA con botones de acción -->
+            <!-- PANEL IZQUIERDO: MAPA -->
             <div class="mapa-panel">
                 <div class="mapa-titulo">
                     <i class="fas fa-project-diagram"></i> Mapa del Ecosistema creado para los cursos DO nivel 1
                 </div>
-                <!-- Módulos agrupados -->
                 <div class="modulo-grupo">
                     <div class="modulo-header"><i class="fas fa-database"></i> DATOS MAESTROS & BASE</div>
                     <div class="modulo-grid">
@@ -1187,7 +1145,6 @@
                 <div class="relaciones-grafico">
                     <i class="fas fa-link"></i> <strong>Lógica DO:</strong> Los cursos marcados en el panel derecho alimentan la configuración de estos módulos. Pasa el mouse sobre un módulo para ver sus cursos asociados.
                 </div>
-                <!-- Botones de planificar y tips -->
                 <div class="mapa-action-buttons">
                     <div class="mapa-plan-btn">
                         <button class="sugerencias-btn" id="planificarBtnMapa">
@@ -1202,15 +1159,13 @@
                 </div>
             </div>
 
-            <!-- COLUMNA DERECHA: PLAN DE CURSOS (todo igual) -->
+            <!-- PANEL DERECHO: PLAN DE CURSOS -->
             <div class="plan-panel">
-                <!-- Dashboard con cerebro + NUEVO BADGE de clientes empoderados (AHORA OCULTO) -->
                 <div class="dashboard">
                     <div class="metric"><i class="fas fa-clock"></i><div><span class="label">Base</span><div class="value" id="tiempoTotalBase">16h</div></div></div>
                     <div class="cerebro-container">
                         <i class="fas fa-brain cerebro-icon"></i>
                         <span class="cerebro-progreso" id="cerebroPorcentaje">0%</span>
-                        <!-- NUEVO: Badge de clientes empoderados - OCULTO por defecto (display: none en CSS) -->
                         <div class="empoderado-badge" id="empoderadoBadge">
                             🚀 7 clientes
                         </div>
@@ -1218,7 +1173,6 @@
                     <div class="metric"><i class="fas fa-hard-hat"></i><div><span class="label">Estado</span><div class="value" id="estadoObra">En cimentación</div></div></div>
                 </div>
 
-                <!-- Controles de tiempo -->
                 <div class="control-panel">
                     <div class="slider-group">
                         <label>Min/curso</label>
@@ -1246,7 +1200,6 @@
                     </div>
                 </div>
 
-                <!-- Barra de progreso global -->
                 <div class="progreso-principal">
                     <i class="fas fa-drafting-compass fa-lg"></i>
                     <div class="barra-container">
@@ -1255,7 +1208,6 @@
                     <span id="completados">0</span>/<span id="totalCursos">20</span> (básicos)
                 </div>
 
-                <!-- Botones de fase -->
                 <div class="fase-selectores">
                     <button class="btn-fase" id="selectFase1"><i class="fas fa-check"></i> F1</button>
                     <button class="btn-fase" id="selectFase2"><i class="fas fa-check"></i> F2</button>
@@ -1264,7 +1216,6 @@
                     <button class="btn-fase" id="deselectAll"><i class="fas fa-undo"></i> Limpiar</button>
                 </div>
 
-                <!-- SECCIÓN: PLAN BÁSICO -->
                 <div class="seccion-titulo">
                     <i class="fas fa-hard-hat"></i> Nivel Básico: "Cimientos del Éxito" · 4 fases
                 </div>
@@ -1272,7 +1223,6 @@
                     <i class="fas fa-bullhorn"></i> <strong>¡Bienvenido a Rankmi Academy!</strong> Este es tu punto de partida. Aprende desde la configuración del Master hasta el lanzamiento de tus primeras evaluaciones. Pasos guiados, checklists y certificados.
                 </div>
 
-                <!-- Grid de cursos básicos (4 fases) -->
                 <div class="fases-grid" id="fasesContainerBasico">
                     <!-- FASE 1 -->
                     <div class="fase-card" data-fase="1">
@@ -1367,7 +1317,6 @@
                     </div>
                 </div>
 
-                <!-- SECCIÓN: NIVEL AVANZADO (spoiler) -->
                 <div class="seccion-titulo" style="margin-top: 2rem;">
                     <i class="fas fa-crown"></i> Nivel Avanzado: "EmpoderaDO" · Próximamente (3 fases)
                 </div>
@@ -1375,9 +1324,7 @@
                     <i class="fas fa-eye"></i> <strong>¿Dominas la herramienta o la herramienta te domina a ti?</strong> Próximamente: Aprende a resolver crisis de data, calibrar desempeño como experto y configurar flujos que ahorren horas. <br> <span style="color:#00ffff;">Fase 2 de 2 - Spoiler:</span> Estos son los cursos que vendrán:
                 </div>
 
-                <!-- Grid de cursos avanzados (sin checkboxes) -->
                 <div class="fases-grid" style="margin-top: 1rem;">
-                    <!-- Fase Avanzada 1: Hub & Estructura -->
                     <div class="fase-card avanzado">
                         <div class="fase-header"><i class="fas fa-database"></i><h4>Hub: Arquitecto de Datos</h4></div>
                         <div class="curso-item avanzado" data-descripcion="Tip: Cómo reestructurar departamentos masivamente sin perder histórico. Punto crítico: El impacto de los IDs de posición en reportes.">
@@ -1390,8 +1337,6 @@
                             <div class="curso-info"><span class="curso-nombre">Segmentación Estratégica</span></div>
                         </div>
                     </div>
-
-                    <!-- Fase Avanzada 2: Gestión del Talento -->
                     <div class="fase-card avanzado">
                         <div class="fase-header"><i class="fas fa-chart-line"></i><h4>Talento: Estratega de Desempeño</h4></div>
                         <div class="curso-item avanzado" data-descripcion="Tip: Fórmulas personalizadas y pesos ponderados. Punto crítico: Por qué una escala mal configurada puede desmotivar.">
@@ -1407,8 +1352,6 @@
                             <div class="curso-info"><span class="curso-nombre">Metas y OKRs Dinámicos</span></div>
                         </div>
                     </div>
-
-                    <!-- Fase Avanzada 3: Cultura y Experiencia -->
                     <div class="fase-card avanzado">
                         <div class="fase-header"><i class="fas fa-heart"></i><h4>Cultura: Guardián del Engagement</h4></div>
                         <div class="curso-item avanzado" data-descripcion="Tip: Análisis de sentimientos en comentarios. Punto crítico: Cómo manejar resultados negativos.">
@@ -1430,12 +1373,11 @@
         </div>
     </div>
 
-    <!-- Tooltip flotante -->
     <div id="tooltip" class="custom-tooltip" style="display: none; position: absolute;"></div>
 
     <script>
         (function() {
-            // ===== LÓGICA DE MODALES (incluyendo el nuevo EmpoderaDO) =====
+            // ===== LÓGICA DE MODALES (sin cambios) =====
             const modalInicial = document.getElementById('modalInicial');
             const cerrarModal = document.getElementById('cerrarModal');
             const cerrarModalBtn = document.getElementById('cerrarModalBtn');
@@ -1491,7 +1433,6 @@
             cerrarTicketsBtn.addEventListener('click', () => modalTickets.style.display = 'none');
             modalTickets.addEventListener('click', (e) => { if (e.target === modalTickets) modalTickets.style.display = 'none'; });
 
-            // Modal tips
             const modalTips = document.getElementById('modalTips');
             const tipsBtnMapa = document.getElementById('tipsBtnMapa');
             const cerrarTips = document.getElementById('cerrarModalTips');
@@ -1501,7 +1442,6 @@
             cerrarTipsBtn.addEventListener('click', () => modalTips.style.display = 'none');
             modalTips.addEventListener('click', (e) => { if (e.target === modalTips) modalTips.style.display = 'none'; });
 
-            // Modal plan
             const modalPlan = document.getElementById('modalPlan');
             const planificarBtnMapa = document.getElementById('planificarBtnMapa');
             const cerrarPlan = document.getElementById('cerrarModalPlan');
@@ -1509,20 +1449,17 @@
             cerrarPlan.addEventListener('click', () => modalPlan.style.display = 'none');
             modalPlan.addEventListener('click', (e) => { if (e.target === modalPlan) modalPlan.style.display = 'none'; });
 
-            // ===== NUEVO: MODAL EMPODERADO =====
+            // MODAL EMPODERADO
             const modalEmpodera = document.getElementById('modalEmpoderaDO');
             const empoderaBtn = document.getElementById('empoderaDOBtn');
             const cerrarEmpodera = document.getElementById('cerrarModalEmpoderaDO');
             const cerrarEmpoderaBtn = document.getElementById('cerrarModalEmpoderaDOBtn');
-            // Badge flotante
             const empoderadoBadge = document.getElementById('empoderadoBadge');
 
             if (empoderaBtn) {
                 empoderaBtn.addEventListener('click', () => {
                     if (modalEmpodera) {
                         modalEmpodera.style.display = 'flex';
-                        // Mostrar el badge solo cuando se abre el modal (opcional)
-                        // if (empoderadoBadge) empoderadoBadge.style.display = 'block';
                     }
                 });
             }
@@ -1530,7 +1467,6 @@
                 cerrarEmpodera.addEventListener('click', () => {
                     if (modalEmpodera) {
                         modalEmpodera.style.display = 'none';
-                        // El badge se mantiene oculto (ya está en none por CSS)
                     }
                 });
             }
@@ -1549,7 +1485,7 @@
                 });
             }
 
-            // ===== FECHA Y HORA ACTUAL =====
+            // ===== FECHA Y HORA =====
             function actualizarFechaHora() {
                 const ahora = new Date();
                 const opciones = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -1558,9 +1494,9 @@
             actualizarFechaHora();
             setInterval(actualizarFechaHora, 1000);
 
-            // ===== LÓGICA DE CURSOS BÁSICOS =====
+            // ===== LÓGICA DE CURSOS BÁSICOS (sin cambios) =====
             const checkboxes = Array.from(document.querySelectorAll('.curso-check'));
-            const totalCursos = checkboxes.length; // 20
+            const totalCursos = checkboxes.length;
             document.getElementById('totalCursos').textContent = totalCursos;
 
             const minCursoSlider = document.getElementById('minCurso');
@@ -1721,7 +1657,7 @@
                 });
             });
 
-            // ========== TOOLTIPS ==========
+            // ===== TOOLTIPS =====
             const tooltip = document.getElementById('tooltip');
             const todosLosCursos = document.querySelectorAll('.curso-item');
 
@@ -1746,47 +1682,60 @@
                 });
             });
 
-            // ===== PLANIFICADOR (con tips internos y export sin columna de recomendaciones) =====
+            // ===== NUEVA LÓGICA DEL PLANIFICADOR (siempre con fecha inicio y fin) =====
+            const fechaInicioPlan = document.getElementById('fechaInicioPlan');
+            const fechaLimitePlan = document.getElementById('fechaLimitePlan');
+            const incluirFinde = document.getElementById('incluirFinde');
+            const soloPendientes = document.getElementById('soloPendientes');
+            const infoIntensidad = document.getElementById('infoIntensidadCalculada');
+            const errorFechaLimite = document.getElementById('errorFechaLimite');
             const generarPlanBtn = document.getElementById('generarPlanBtn');
             const planResultado = document.getElementById('planResultado');
             const exportarPlanBtn = document.getElementById('exportarPlanBtn');
-            const fechaInicioPlan = document.getElementById('fechaInicioPlan');
-            const intensidadPlan = document.getElementById('intensidadPlan');
-            const soloPendientes = document.getElementById('soloPendientes');
 
-            function normalizarTexto(texto) {
-                return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            function sumarDias(fechaStr, dias) {
+                const fecha = new Date(fechaStr + 'T00:00:00');
+                fecha.setDate(fecha.getDate() + dias);
+                return fecha.toISOString().split('T')[0];
             }
 
-            // Texto de tips motivacionales (normalizado)
-            const tipsMotivacionales = normalizarTexto(`
-                <h3><i class="fas fa-hard-hat"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Exito"</h3>
-                <p><strong>1. Gestion de Agenda (El Blindaje de Valor)</strong><br>
-                Tip: Reserva tus martes y jueves de 9:00 AM a 10:00 AM. Es el momento ideal para aprovechar tu maxima energia mental antes de iniciar la jornada operativa.<br>
-                Pro-Tip: Implementa el "Time Box de Enfoque". Si el curso dura 40 min, agenda 60 min. Usa esos 20 min extra para aplicar lo aprendido inmediatamente en un caso real de tus proyectos actuales.<br>
-                Recomendacion: Manten tu calendario como "Ocupado" o "Tiempo de Enfoque". Asi aseguras que este espacio de crecimiento sea respetado como una prioridad estrategica.</p>
+            function actualizarFechaFinPorDefecto() {
+                const inicio = fechaInicioPlan.value;
+                if (inicio) {
+                    const finPorDefecto = sumarDias(inicio, 60);
+                    fechaLimitePlan.value = finPorDefecto;
+                    fechaLimitePlan.max = finPorDefecto; // opcional
+                }
+            }
 
-                <p><strong>2. Prioridad: Excelencia en el Servicio a traves del Aprendizaje</strong><br>
-                Tip: Mira cada curso como el proceso de "afilar la sierra". Estar actualizado en la configuracion del ATS te permite ofrecer soluciones mas rapidas y precisas a tus clientes.<br>
-                Pro-Tip: Regla de "Mente Despejada". Atiende tus pendientes criticos antes de iniciar. Al entrar al curso con la bandeja organizada, tu capacidad de retencion tecnica fluye al maximo.</p>
+            function validarRangoFechas() {
+                const inicio = new Date(fechaInicioPlan.value + 'T00:00:00');
+                const fin = new Date(fechaLimitePlan.value + 'T00:00:00');
+                const diffTime = fin - inicio;
+                const diffDays = diffTime / (1000 * 60 * 60 * 24);
+                if (diffDays > 60) {
+                    errorFechaLimite.style.display = 'block';
+                    return false;
+                } else {
+                    errorFechaLimite.style.display = 'none';
+                    return true;
+                }
+            }
 
-                <p><strong>3. Ejecucion Tecnica (Nivel Experto)</strong><br>
-                Tip: Practica en tiempo real con Pantalla Dividida. Ten la Academy a un lado y el Ambiente de Pruebas al otro. La maestria se alcanza haciendo mientras descubres.<br>
-                Pro-Tip: Documenta tus "Ganancias de Eficiencia". Anota cuanto tiempo ahorraras en futuras tareas gracias a lo aprendido. Cuantificar tu agilidad es el mejor motor de motivacion.</p>
-
-                <p><strong>4. Mentalidad de Crecimiento (Mindset)</strong><br>
-                Tip: El dominio total de la plataforma construye tu Autoridad Profesional. La seguridad tecnica se proyecta como confianza ante el cliente.<br>
-                Pro-Tip: Evoluciona de Usuario a Arquitecto. Mientras el usuario conoce el proceso, el Arquitecto comprende como cada configuracion potencia el clima organizacional y la productividad.</p>
-
-                <p><strong>📝 Contenido para tu Celda de "Recomendaciones de Exito"</strong><br>
-                Puedes copiar y pegar esto en una pestana de "Reglas de Oro" en tu Excel:</p>
-                <ul>
-                    <li><strong>Cero Reuniones:</strong> Prohibido tomar llamadas durante los 40 min del curso.</li>
-                    <li><strong>Preparacion de Obra:</strong> Ten a mano los manuales de producto de Rankmi para profundizar.</li>
-                    <li><strong>Planificacion Bimestral:</strong> Si te saltas una semana, recupera los 2 cursos el viernes. No dejes que la "deuda tecnica" se acumule al Mes 2.</li>
-                    <li><strong>Prioridad 1:</strong> El cliente es primero, pero el aprendizaje es el que garantiza que el cliente tenga exito. Sin aprendizaje no hay escalabilidad.</li>
-                </ul>
-            `);
+            function diasEntreFechas(inicio, fin, incluirFinde) {
+                let count = 0;
+                let current = new Date(inicio + 'T00:00:00');
+                current.setHours(0,0,0,0);
+                const end = new Date(fin + 'T00:00:00');
+                end.setHours(0,0,0,0);
+                while (current <= end) {
+                    if (incluirFinde || (current.getDay() !== 0 && current.getDay() !== 6)) {
+                        count++;
+                    }
+                    current.setDate(current.getDate() + 1);
+                }
+                return count;
+            }
 
             function obtenerCursosOrdenados() {
                 const fasesContainer = document.getElementById('fasesContainerBasico');
@@ -1814,15 +1763,62 @@
                 return cursos;
             }
 
+            function normalizarTexto(texto) {
+                return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            }
+
+            function calcularIntensidad() {
+                const inicio = fechaInicioPlan.value;
+                const fin = fechaLimitePlan.value;
+                if (!inicio || !fin) return;
+
+                if (!validarRangoFechas()) {
+                    infoIntensidad.innerHTML = 'Ajusta la fecha fin (máx 60 días)';
+                    return;
+                }
+
+                const diasDisponibles = diasEntreFechas(inicio, fin, incluirFinde.checked);
+                if (diasDisponibles <= 0) {
+                    infoIntensidad.innerHTML = 'La fecha fin debe ser posterior a la inicio.';
+                    return;
+                }
+
+                let cursos = obtenerCursosOrdenados();
+                if (soloPendientes.checked) {
+                    cursos = cursos.filter(c => !c.checkbox.checked);
+                }
+                const totalCursosPend = cursos.length;
+                if (totalCursosPend === 0) {
+                    infoIntensidad.innerHTML = 'No hay cursos pendientes.';
+                    return;
+                }
+
+                const cursosPorDiaRaw = totalCursosPend / diasDisponibles;
+                const cursosPorDia = Math.ceil(cursosPorDiaRaw * 10) / 10; // redondeado a 1 decimal
+                const minPorCurso = parseInt(minCursoSlider.value);
+                const horasPorDia = (cursosPorDia * minPorCurso) / 60;
+
+                let mensaje = `Necesitas ${cursosPorDia} cursos/día ≈ ${horasPorDia.toFixed(1)} h/día.`;
+                if (cursosPorDia > 8) {
+                    mensaje += ' <span style="color:#ff8200;">(Intensidad muy alta, >8 cursos/día)</span>';
+                }
+                infoIntensidad.innerHTML = mensaje;
+
+                // Guardamos para usar en generarPlan
+                window.cursosPorDiaCalculado = cursosPorDia;
+            }
+
             function generarPlan() {
+                if (!validarRangoFechas()) {
+                    alert('La diferencia entre fecha inicio y fin no puede ser mayor a 60 días.');
+                    return;
+                }
+
                 const fechaInicio = new Date(fechaInicioPlan.value + 'T00:00:00');
                 if (isNaN(fechaInicio)) {
                     alert('Selecciona una fecha de inicio válida.');
                     return;
                 }
-
-                const intensidad = intensidadPlan.value;
-                let cursosPorDia = intensidad === 'ligera' ? 1 : intensidad === 'media' ? 2 : 4;
 
                 let cursos = obtenerCursosOrdenados();
                 if (soloPendientes.checked) {
@@ -1835,13 +1831,26 @@
                     return;
                 }
 
-                // Distribuir en días (saltando fines de semana)
+                const inicio = fechaInicioPlan.value;
+                const fin = fechaLimitePlan.value;
+                const diasDisponibles = diasEntreFechas(inicio, fin, incluirFinde.checked);
+                if (diasDisponibles <= 0) {
+                    alert('La fecha fin debe ser posterior a la inicio.');
+                    return;
+                }
+
+                const cursosPorDia = Math.ceil(cursos.length / diasDisponibles);
+
+                // Distribuir en días
                 const plan = [];
                 let diaActual = new Date(fechaInicio);
                 let index = 0;
                 while (index < cursos.length) {
-                    while (diaActual.getDay() === 0 || diaActual.getDay() === 6) {
-                        diaActual.setDate(diaActual.getDate() + 1);
+                    // Saltar fines de semana si no se incluyen
+                    if (!incluirFinde.checked) {
+                        while (diaActual.getDay() === 0 || diaActual.getDay() === 6) {
+                            diaActual.setDate(diaActual.getDate() + 1);
+                        }
                     }
                     const fechaStr = diaActual.toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
                     for (let i = 0; i < cursosPorDia && index < cursos.length; i++) {
@@ -1858,19 +1867,47 @@
                 const minPorCurso = parseInt(minCursoSlider.value);
                 const tiempoEstimadoHoras = (minPorCurso / 60).toFixed(1) + ' h';
 
-                // Mostrar tabla con Fecha, Curso, Fase, Tiempo estimado
+                // Mostrar tabla
                 let htmlTabla = '<table class="tabla-plan"><tr><th>Fecha</th><th>Curso</th><th>Fase</th><th>Tiempo estimado</th></tr>';
                 plan.forEach(p => {
                     htmlTabla += `<tr><td>${p.fecha}</td><td>${p.curso}</td><td>F${p.fase}</td><td>${tiempoEstimadoHoras}</td></tr>`;
                 });
                 htmlTabla += '</table>';
 
-                // Añadir bloque de tips motivacionales
+                // Añadir tips motivacionales (normalizados)
+                const tipsMotivacionales = normalizarTexto(`
+                    <h3><i class="fas fa-hard-hat"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Exito"</h3>
+                    <p><strong>1. Gestion de Agenda (El Blindaje de Valor)</strong><br>
+                    Tip: Reserva tus martes y jueves de 9:00 AM a 10:00 AM. Es el momento ideal para aprovechar tu maxima energia mental antes de iniciar la jornada operativa.<br>
+                    Pro-Tip: Implementa el "Time Box de Enfoque". Si el curso dura 40 min, agenda 60 min. Usa esos 20 min extra para aplicar lo aprendido inmediatamente en un caso real de tus proyectos actuales.<br>
+                    Recomendacion: Manten tu calendario como "Ocupado" o "Tiempo de Enfoque". Asi aseguras que este espacio de crecimiento sea respetado como una prioridad estrategica.</p>
+
+                    <p><strong>2. Prioridad: Excelencia en el Servicio a traves del Aprendizaje</strong><br>
+                    Tip: Mira cada curso como el proceso de "afilar la sierra". Estar actualizado en la configuracion del ATS te permite ofrecer soluciones mas rapidas y precisas a tus clientes.<br>
+                    Pro-Tip: Regla de "Mente Despejada". Atiende tus pendientes criticos antes de iniciar. Al entrar al curso con la bandeja organizada, tu capacidad de retencion tecnica fluye al maximo.</p>
+
+                    <p><strong>3. Ejecucion Tecnica (Nivel Experto)</strong><br>
+                    Tip: Practica en tiempo real con Pantalla Dividida. Ten la Academy a un lado y el Ambiente de Pruebas al otro. La maestria se alcanza haciendo mientras descubres.<br>
+                    Pro-Tip: Documenta tus "Ganancias de Eficiencia". Anota cuanto tiempo ahorraras en futuras tareas gracias a lo aprendido. Cuantificar tu agilidad es el mejor motor de motivacion.</p>
+
+                    <p><strong>4. Mentalidad de Crecimiento (Mindset)</strong><br>
+                    Tip: El dominio total de la plataforma construye tu Autoridad Profesional. La seguridad tecnica se proyecta como confianza ante el cliente.<br>
+                    Pro-Tip: Evoluciona de Usuario a Arquitecto. Mientras el usuario conoce el proceso, el Arquitecto comprende como cada configuracion potencia el clima organizacional y la productividad.</p>
+
+                    <p><strong>📝 Contenido para tu Celda de "Recomendaciones de Exito"</strong><br>
+                    Puedes copiar y pegar esto en una pestana de "Reglas de Oro" en tu Excel:</p>
+                    <ul>
+                        <li><strong>Cero Reuniones:</strong> Prohibido tomar llamadas durante los 40 min del curso.</li>
+                        <li><strong>Preparacion de Obra:</strong> Ten a mano los manuales de producto de Rankmi para profundizar.</li>
+                        <li><strong>Planificacion Bimestral:</strong> Si te saltas una semana, recupera los 2 cursos el viernes. No dejes que la "deuda tecnica" se acumule al Mes 2.</li>
+                        <li><strong>Prioridad 1:</strong> El cliente es primero, pero el aprendizaje es el que garantiza que el cliente tenga exito. Sin aprendizaje no hay escalabilidad.</li>
+                    </ul>
+                `);
                 const htmlCompleto = htmlTabla + '<div class="tips-block">' + tipsMotivacionales + '</div>';
                 planResultado.innerHTML = htmlCompleto;
                 exportarPlanBtn.style.display = 'inline-block';
 
-                // Preparar exportación a Excel (SIN columna de recomendaciones)
+                // Preparar exportación a Excel
                 let tablaExcel = `
                     <table>
                         <tr><th>Fecha</th><th>Curso</th><th>Fase</th><th>Tiempo estimado (h)</th><th>Tiempo real (para llenar)</th></tr>
@@ -1898,8 +1935,27 @@
                 };
             }
 
+            // Eventos del planificador
+            fechaInicioPlan.addEventListener('change', function() {
+                actualizarFechaFinPorDefecto();
+                validarRangoFechas();
+                calcularIntensidad();
+            });
+            fechaLimitePlan.addEventListener('change', function() {
+                validarRangoFechas();
+                calcularIntensidad();
+            });
+            incluirFinde.addEventListener('change', calcularIntensidad);
+            soloPendientes.addEventListener('change', calcularIntensidad);
+            minCursoSlider.addEventListener('input', calcularIntensidad);
             generarPlanBtn.addEventListener('click', generarPlan);
 
+            // Inicializar planificador
+            actualizarFechaFinPorDefecto();
+            validarRangoFechas();
+            calcularIntensidad();
+
+            // Inicializar resto de la app
             toggleModo();
             actualizarTodo();
         })();
