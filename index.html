@@ -1055,14 +1055,14 @@
         </div>
     </div>
 
-    <!-- MODAL PLANIFICADOR (MODIFICADO: siempre con fecha inicio y fin, sin opción de intensidad manual) -->
+    <!-- MODAL PLANIFICADOR (MODIFICADO: fecha mínima hoy, fecha máxima hoy+60) -->
     <div id="modalPlan" class="modal-overlay" style="display: none;">
         <div class="modal-content" style="max-width: 800px;">
             <button class="modal-close" id="cerrarModalPlan">&times;</button>
             <h2><i class="fas fa-calendar-plus"></i> Planifica tu aprendizaje</h2>
             <div class="plan-opciones">
-                <label>Fecha de inicio: <input type="date" id="fechaInicioPlan" value="2025-03-01"></label>
-                <label>Fecha fin (máx. 60 días): <input type="date" id="fechaLimitePlan"></label>
+                <label>Fecha de inicio: <input type="date" id="fechaInicioPlan" min="" value=""></label>
+                <label>Fecha fin (máx. 60 días): <input type="date" id="fechaLimitePlan" min="" max=""></label>
                 <label><input type="checkbox" id="incluirFinde"> Incluir fines de semana (días hábiles = todos)</label>
                 <label><input type="checkbox" id="soloPendientes" checked> Incluir solo cursos pendientes (según checkboxes)</label>
                 <div id="infoIntensidadCalculada" style="margin-top: 0.5rem; font-style: italic; color: #00ffff;"></div>
@@ -1890,7 +1890,7 @@
                 });
             });
 
-            // ===== NUEVA LÓGICA DEL PLANIFICADOR (siempre con fecha inicio y fin) =====
+            // ===== LÓGICA DEL PLANIFICADOR CON FECHAS DINÁMICAS =====
             const fechaInicioPlan = document.getElementById('fechaInicioPlan');
             const fechaLimitePlan = document.getElementById('fechaLimitePlan');
             const incluirFinde = document.getElementById('incluirFinde');
@@ -1901,19 +1901,35 @@
             const planResultado = document.getElementById('planResultado');
             const exportarPlanBtn = document.getElementById('exportarPlanBtn');
 
+            // Función para formatear fecha como YYYY-MM-DD
+            function formatearFecha(fecha) {
+                const year = fecha.getFullYear();
+                const month = String(fecha.getMonth() + 1).padStart(2, '0');
+                const day = String(fecha.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            // Inicializar fechas mínimas y máximas
+            const hoy = new Date();
+            const hoyStr = formatearFecha(hoy);
+            
+            // Calcular fecha máxima (hoy + 60 días)
+            const fechaMax = new Date(hoy);
+            fechaMax.setDate(hoy.getDate() + 60);
+            const fechaMaxStr = formatearFecha(fechaMax);
+
+            // Establecer atributos de los inputs de fecha
+            fechaInicioPlan.setAttribute('min', hoyStr);
+            fechaInicioPlan.value = hoyStr; // Valor por defecto = hoy
+
+            fechaLimitePlan.setAttribute('min', hoyStr);
+            fechaLimitePlan.setAttribute('max', fechaMaxStr);
+            fechaLimitePlan.value = fechaMaxStr; // Valor por defecto = hoy + 60
+
             function sumarDias(fechaStr, dias) {
                 const fecha = new Date(fechaStr + 'T00:00:00');
                 fecha.setDate(fecha.getDate() + dias);
                 return fecha.toISOString().split('T')[0];
-            }
-
-            function actualizarFechaFinPorDefecto() {
-                const inicio = fechaInicioPlan.value;
-                if (inicio) {
-                    const finPorDefecto = sumarDias(inicio, 60);
-                    fechaLimitePlan.value = finPorDefecto;
-                    fechaLimitePlan.max = finPorDefecto; // opcional
-                }
             }
 
             function validarRangoFechas() {
@@ -2002,7 +2018,7 @@
                 }
 
                 const cursosPorDiaRaw = totalCursosPend / diasDisponibles;
-                const cursosPorDia = Math.ceil(cursosPorDiaRaw * 10) / 10; // redondeado a 1 decimal
+                const cursosPorDia = Math.ceil(cursosPorDiaRaw * 10) / 10;
                 const minPorCurso = parseInt(minCursoSlider.value);
                 const horasPorDia = (cursosPorDia * minPorCurso) / 60;
 
@@ -2011,8 +2027,6 @@
                     mensaje += ' <span style="color:#ff8200;">(Intensidad muy alta, >8 cursos/día)</span>';
                 }
                 infoIntensidad.innerHTML = mensaje;
-
-                // Guardamos para usar en generarPlan
                 window.cursosPorDiaCalculado = cursosPorDia;
             }
 
@@ -2145,7 +2159,6 @@
 
             // Eventos del planificador
             fechaInicioPlan.addEventListener('change', function() {
-                actualizarFechaFinPorDefecto();
                 validarRangoFechas();
                 calcularIntensidad();
             });
@@ -2159,7 +2172,6 @@
             generarPlanBtn.addEventListener('click', generarPlan);
 
             // Inicializar planificador
-            actualizarFechaFinPorDefecto();
             validarRangoFechas();
             calcularIntensidad();
 
