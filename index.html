@@ -799,8 +799,103 @@
             margin-bottom: 1rem;
         }
 
+        /* ===== NUEVOS ESTILOS PARA EL MODAL DE DOCUMENTACIÓN ===== */
+        .modal-documentacion .modal-content {
+            max-width: 1100px;
+            width: 95%;
+        }
+
+        .documentacion-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .doc-card {
+            background: rgba(0, 40, 80, 0.7);
+            border: 1px solid #00ffff40;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .doc-card:hover {
+            border-color: #ff8200;
+            box-shadow: 0 0 20px #ff820060;
+            transform: translateY(-3px);
+        }
+
+        .doc-card i {
+            font-size: 2rem;
+            color: #ff8200;
+            filter: drop-shadow(0 0 5px #ff8200);
+        }
+
+        .doc-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #00ffff;
+            margin: 0;
+            line-height: 1.4;
+            min-height: 2.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .doc-card a {
+            background: #ff8200;
+            color: #001a3d;
+            border: 2px solid #00ffff;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .doc-card a:hover {
+            background: #00ffff;
+            border-color: #ff8200;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .responsable-docs {
+            background: linear-gradient(145deg, #ff820020, #00ffff10);
+            border: 2px solid #ff8200;
+            border-radius: 2rem;
+            padding: 1.2rem;
+            margin: 1rem 0 1.5rem 0;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .responsable-docs strong {
+            color: #00ffff;
+            font-size: 1.3rem;
+        }
+
         @media (max-width: 1000px) {
             .arquitectura-layout {
+                grid-template-columns: 1fr;
+            }
+            .documentacion-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .documentacion-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1058,6 +1153,64 @@
         </div>
     </div>
 
+    <!-- ===== NUEVO MODAL DE DOCUMENTACIÓN DE PRODUCTOS ===== -->
+    <div id="modalDocumentacion" class="modal-overlay modal-documentacion" style="display: none;">
+        <div class="modal-content" style="max-width: 1100px;">
+            <button class="modal-close" id="cerrarModalDocumentacion">&times;</button>
+            <h2><i class="fas fa-book"></i> Documentación de Productos</h2>
+            
+            <!-- Responsabilidad de los POs -->
+            <div class="responsable-docs">
+                <i class="fas fa-hard-hat" style="color: #ff8200; margin-right: 10px;"></i>
+                La construcción y documentación de los productos es labor de los <strong>Product Owners (POs)</strong> de cada producto.
+            </div>
+
+            <!-- Grid de productos (organizados por categoría lógica) -->
+            <div class="documentacion-grid">
+                <!-- Core & Base -->
+                <div class="doc-card"><i class="fas fa-database"></i><h3>Core</h3><a href="https://rankmi.odoo.com/knowledge/article/2686" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-sitemap"></i><h3>Organigrama</h3><a href="https://rankmi.odoo.com/knowledge/article/2399" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-coins"></i><h3>Administración y Nómina</h3><a href="https://rankmi.odoo.com/knowledge/article/93" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-file-invoice"></i><h3>Documentos</h3><a href="https://rankmi.odoo.com/knowledge/article/2730" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                
+                <!-- Talento y Desarrollo -->
+                <div class="doc-card"><i class="fas fa-star"></i><h3>Desempeño</h3><a href="https://rankmi.odoo.com/knowledge/article/117" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-trophy"></i><h3>Reconocimiento</h3><a href="https://rankmi.odoo.com/knowledge/article/2309" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-comment"></i><h3>Feedback continuo</h3><a href="https://rankmi.odoo.com/knowledge/article/2381" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-graduation-cap"></i><h3>Centro de aprendizaje</h3><a href="https://rankmi.odoo.com/knowledge/article/2416" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-road"></i><h3>Planes de Acción</h3><a href="https://rankmi.odoo.com/knowledge/article/132" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-bullseye"></i><h3>Talento</h3><a href="https://rankmi.odoo.com/knowledge/article/119" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-user-tie"></i><h3>Selección (ATS)</h3><a href="https://rankmi.odoo.com/knowledge/article/2298" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                
+                <!-- Cultura y Bienestar -->
+                <div class="doc-card"><i class="fas fa-cloud-sun"></i><h3>Clima</h3><a href="https://rankmi.odoo.com/knowledge/article/123" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-gift"></i><h3>Beneficios</h3><a href="https://rankmi.odoo.com/knowledge/article/122" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-heartbeat"></i><h3>Telemedicina</h3><a href="https://rankmi.odoo.com/knowledge/article/1647" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-birthday-cake"></i><h3>Cumpleaños y aniversarios</h3><a href="https://rankmi.odoo.com/knowledge/article/3145" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                
+                <!-- Encuestas y Comunicación -->
+                <div class="doc-card"><i class="fas fa-poll"></i><h3>Encuestas y formularios</h3><a href="https://rankmi.odoo.com/knowledge/article/98" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-wave-square"></i><h3>Encuesta de Pulso</h3><a href="https://rankmi.odoo.com/knowledge/article/138" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-newspaper"></i><h3>Noticias</h3><a href="https://rankmi.odoo.com/knowledge/article/2234" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-users-cog"></i><h3>Publicaciones y Grupos</h3><a href="https://rankmi.odoo.com/knowledge/article/2269" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                
+                <!-- Operaciones y Solicitudes -->
+                <div class="doc-card"><i class="fas fa-headset"></i><h3>Employee Service</h3><a href="https://rankmi.odoo.com/knowledge/article/114" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-clock"></i><h3>Asistencia (Ex-tempo)</h3><a href="https://rankmi.odoo.com/knowledge/article/2374" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-calendar-alt"></i><h3>Vacaciones</h3><a href="https://rankmi.odoo.com/knowledge/article/2434" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-paper-plane"></i><h3>Solicitudes</h3><a href="https://rankmi.odoo.com/knowledge/article/2426" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                
+                <!-- Inteligencia y Análisis -->
+                <div class="doc-card"><i class="fas fa-chart-pie"></i><h3>Dashboard y reportería</h3><a href="https://rankmi.odoo.com/knowledge/article/128" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-robot"></i><h3>Rankmi IA</h3><a href="https://rankmi.odoo.com/knowledge/article/141" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-chart-line"></i><h3>Presupuestos</h3><a href="https://rankmi.odoo.com/knowledge/article/3139" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+                <div class="doc-card"><i class="fas fa-cubes"></i><h3>Rankmi Hub</h3><a href="https://rankmi.odoo.com/knowledge/article/71" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
+            </div>
+            
+            <button class="modal-btn" id="cerrarModalDocumentacionBtn" style="width: 100%;">Cerrar</button>
+        </div>
+    </div>
+
     <!-- CONTENEDOR PRINCIPAL -->
     <div class="container">
         <div class="suite-header">
@@ -1082,7 +1235,10 @@
                 <div class="action-header">
                     <span>🔍 Ingresa para ver iniciativas o información:</span>
                     <div class="action-buttons">
-                        <!-- MODIFICADO: Nuevo enlace en el botón de Onboarding -->
+                        <!-- NUEVO BOTÓN DE DOCUMENTACIÓN -->
+                        <button class="sugerencias-btn outline" id="documentacionBtn">
+                            <i class="fas fa-book"></i> 📚 Documentación de Productos
+                        </button>
                         <button class="sugerencias-btn outline" id="onboardingBtn" data-url="https://rankmi.odoo.com/knowledge/article/4036">
                             <i class="fas fa-users"></i> Onboarding transversal
                         </button>
@@ -1417,7 +1573,6 @@
             const onboardingBtn = document.getElementById('onboardingBtn');
             const cerrarOnboarding = document.getElementById('cerrarModalOnboarding');
             const cerrarOnboardingBtn = document.getElementById('cerrarModalOnboardingBtn');
-            // MODIFICADO: El botón ahora abre el modal, no el enlace directamente.
             onboardingBtn.addEventListener('click', () => modalOnboarding.style.display = 'flex');
             cerrarOnboarding.addEventListener('click', () => modalOnboarding.style.display = 'none');
             cerrarOnboardingBtn.addEventListener('click', () => modalOnboarding.style.display = 'none');
@@ -1498,6 +1653,41 @@
                 modalEmpodera.addEventListener('click', (e) => {
                     if (e.target === modalEmpodera) {
                         modalEmpodera.style.display = 'none';
+                    }
+                });
+            }
+
+            // ===== NUEVO MODAL DE DOCUMENTACIÓN =====
+            const modalDocumentacion = document.getElementById('modalDocumentacion');
+            const documentacionBtn = document.getElementById('documentacionBtn');
+            const cerrarDocumentacion = document.getElementById('cerrarModalDocumentacion');
+            const cerrarDocumentacionBtn = document.getElementById('cerrarModalDocumentacionBtn');
+
+            if (documentacionBtn) {
+                documentacionBtn.addEventListener('click', () => {
+                    if (modalDocumentacion) {
+                        modalDocumentacion.style.display = 'flex';
+                    }
+                });
+            }
+            if (cerrarDocumentacion) {
+                cerrarDocumentacion.addEventListener('click', () => {
+                    if (modalDocumentacion) {
+                        modalDocumentacion.style.display = 'none';
+                    }
+                });
+            }
+            if (cerrarDocumentacionBtn) {
+                cerrarDocumentacionBtn.addEventListener('click', () => {
+                    if (modalDocumentacion) {
+                        modalDocumentacion.style.display = 'none';
+                    }
+                });
+            }
+            if (modalDocumentacion) {
+                modalDocumentacion.addEventListener('click', (e) => {
+                    if (e.target === modalDocumentacion) {
+                        modalDocumentacion.style.display = 'none';
                     }
                 });
             }
@@ -1979,3 +2169,4 @@
     </script>
 </body>
 </html>
+
