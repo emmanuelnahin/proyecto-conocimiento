@@ -748,6 +748,15 @@
             font-family: inherit;
             margin-left: 0.5rem;
         }
+        .plan-opciones input[type="date"]:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .plan-opciones small {
+            color: #00ffff;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
         .tabla-plan {
             width: 100%;
             border-collapse: collapse;
@@ -886,6 +895,19 @@
             font-size: 1.3rem;
         }
 
+        .weekday-warning {
+            background: #ff820020;
+            border: 1px solid #ff8200;
+            border-radius: 30px;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #00ffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         @media (max-width: 1000px) {
             .arquitectura-layout {
                 grid-template-columns: 1fr;
@@ -956,12 +978,11 @@
         </div>
     </div>
 
-    <!-- MODAL ONBOARDING (MODIFICADO: Nuevo enlace y reconocimiento a Enzo) -->
+    <!-- MODAL ONBOARDING -->
     <div id="modalOnboarding" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <button class="modal-close" id="cerrarModalOnboarding">&times;</button>
             <h2><i class="fas fa-users"></i> Onboarding transversal</h2>
-            <!-- NUEVO: Reconocimiento del liderazgo de Enzo Marambio -->
             <div style="background: linear-gradient(145deg, #ff820020, #00ffff10); border: 2px solid #ff8200; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; text-align: center;">
                 <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">✨ <strong>Iniciativa liderada y construida por:</strong></p>
                 <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; font-size: 1.6rem; font-weight: 700; color: #00ffff; margin: 1rem 0;">
@@ -971,7 +992,6 @@
             </div>
             <p>Este espacio está actualmente en construcción y tiene como objetivo centralizar materiales y guías para integrar a nuevos miembros del equipo de manera transversal, asegurando una experiencia de inicio fluida y empoderadora.</p>
             <p>Puedes acceder a los avances y al contenido base a través del siguiente enlace:</p>
-            <!-- NUEVO: Enlace actualizado -->
             <p style="text-align: center; margin: 1.5rem 0;">
                 <a href="https://rankmi.odoo.com/knowledge/article/4036" target="_blank" style="background:#ff8200; color:#001a3d; padding:0.8rem 2rem; border-radius:40px; font-weight:700; text-decoration:none; border:2px solid #00ffff; display: inline-block;">
                     <i class="fas fa-book-open"></i> Ver Guía de Onboarding en Odoo
@@ -1055,18 +1075,21 @@
         </div>
     </div>
 
-    <!-- MODAL PLANIFICADOR (MODIFICADO: fecha mínima hoy, fecha máxima hoy+60) -->
+    <!-- MODAL PLANIFICADOR (MEJORADO: solo días de semana, máximo 15 mayo 2026) -->
     <div id="modalPlan" class="modal-overlay" style="display: none;">
         <div class="modal-content" style="max-width: 800px;">
             <button class="modal-close" id="cerrarModalPlan">&times;</button>
             <h2><i class="fas fa-calendar-plus"></i> Planifica tu aprendizaje</h2>
+            <div class="weekday-warning">
+                <i class="fas fa-info-circle"></i> Solo se consideran días hábiles (lunes a viernes) · Fecha máxima: 15 de mayo de 2026
+            </div>
             <div class="plan-opciones">
                 <label>Fecha de inicio: <input type="date" id="fechaInicioPlan" min="" value=""></label>
-                <label>Fecha fin (máx. 60 días): <input type="date" id="fechaLimitePlan" min="" max=""></label>
-                <label><input type="checkbox" id="incluirFinde"> Incluir fines de semana (días hábiles = todos)</label>
+                <label>Fecha fin (máx. 15 mayo 2026): <input type="date" id="fechaLimitePlan" min="" max="2026-05-15"></label>
                 <label><input type="checkbox" id="soloPendientes" checked> Incluir solo cursos pendientes (según checkboxes)</label>
                 <div id="infoIntensidadCalculada" style="margin-top: 0.5rem; font-style: italic; color: #00ffff;"></div>
-                <div id="errorFechaLimite" style="color: #ff8200; font-weight: bold; display: none;">La diferencia entre fechas no puede ser mayor a 60 días.</div>
+                <div id="errorFechaLimite" style="color: #ff8200; font-weight: bold; display: none;">La fecha no puede ser posterior al 15 de mayo de 2026.</div>
+                <div id="errorFinSemana" style="color: #ff8200; font-weight: bold; display: none;">No se pueden seleccionar fines de semana. Elige un día de semana.</div>
             </div>
             <button class="modal-btn" id="generarPlanBtn">Generar plan</button>
             <div id="planResultado" style="margin-top: 1.5rem; max-height: 400px; overflow-y: auto;"></div>
@@ -1074,7 +1097,7 @@
         </div>
     </div>
 
-    <!-- MODAL EMPODERADO (CORREGIDO: enlace de la guía reparado) -->
+    <!-- MODAL EMPODERADO -->
     <div id="modalEmpoderaDO" class="modal-overlay" style="display: none;">
         <div class="modal-content" style="max-width: 800px;">
             <button class="modal-close" id="cerrarModalEmpoderaDO">&times;</button>
@@ -1142,7 +1165,6 @@
                 </ol>
             </div>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 2rem 0;">
-                <!-- ENLACE CORREGIDO: ahora apunta al artículo correcto -->
                 <a href="https://rankmi.odoo.com/knowledge/article/2882" target="_blank" class="sugerencias-btn" style="background: #ff8200; color: #001a3d; text-decoration: none; font-size: 1rem;">
                     <i class="fas fa-book-open"></i> Guía completa en Odoo
                 </a>
@@ -1154,7 +1176,7 @@
         </div>
     </div>
 
-    <!-- ===== NUEVO MODAL DE DOCUMENTACIÓN DE PRODUCTOS ===== -->
+    <!-- MODAL DE DOCUMENTACIÓN DE PRODUCTOS -->
     <div id="modalDocumentacion" class="modal-overlay modal-documentacion" style="display: none;">
         <div class="modal-content" style="max-width: 1100px;">
             <button class="modal-close" id="cerrarModalDocumentacion">&times;</button>
@@ -1166,7 +1188,7 @@
                 La construcción y documentación de los productos es labor de los <strong>Product Owners (POs)</strong> de cada producto.
             </div>
 
-            <!-- Grid de productos (organizados por categoría lógica) -->
+            <!-- Grid de productos -->
             <div class="documentacion-grid">
                 <!-- Core & Base -->
                 <div class="doc-card"><i class="fas fa-database"></i><h3>Core</h3><a href="https://rankmi.odoo.com/knowledge/article/2686" target="_blank"><i class="fas fa-external-link-alt"></i> Ver documentación</a></div>
@@ -1550,7 +1572,7 @@
 
     <script>
         (function() {
-            // ===== LÓGICA DE MODALES (sin cambios) =====
+            // ===== LÓGICA DE MODALES =====
             const modalInicial = document.getElementById('modalInicial');
             const cerrarModal = document.getElementById('cerrarModal');
             const cerrarModalBtn = document.getElementById('cerrarModalBtn');
@@ -1658,7 +1680,7 @@
                 });
             }
 
-            // ===== NUEVO MODAL DE DOCUMENTACIÓN =====
+            // MODAL DE DOCUMENTACIÓN
             const modalDocumentacion = document.getElementById('modalDocumentacion');
             const documentacionBtn = document.getElementById('documentacionBtn');
             const cerrarDocumentacion = document.getElementById('cerrarModalDocumentacion');
@@ -1702,7 +1724,7 @@
             actualizarFechaHora();
             setInterval(actualizarFechaHora, 1000);
 
-            // ===== LÓGICA DE CURSOS BÁSICOS (sin cambios) =====
+            // ===== LÓGICA DE CURSOS BÁSICOS =====
             const checkboxes = Array.from(document.querySelectorAll('.curso-check'));
             const totalCursos = checkboxes.length;
             document.getElementById('totalCursos').textContent = totalCursos;
@@ -1890,13 +1912,13 @@
                 });
             });
 
-            // ===== LÓGICA DEL PLANIFICADOR CON FECHAS DINÁMICAS =====
+            // ===== LÓGICA DEL PLANIFICADOR (MEJORADA: solo días de semana, máximo 15 mayo 2026) =====
             const fechaInicioPlan = document.getElementById('fechaInicioPlan');
             const fechaLimitePlan = document.getElementById('fechaLimitePlan');
-            const incluirFinde = document.getElementById('incluirFinde');
             const soloPendientes = document.getElementById('soloPendientes');
             const infoIntensidad = document.getElementById('infoIntensidadCalculada');
             const errorFechaLimite = document.getElementById('errorFechaLimite');
+            const errorFinSemana = document.getElementById('errorFinSemana');
             const generarPlanBtn = document.getElementById('generarPlanBtn');
             const planResultado = document.getElementById('planResultado');
             const exportarPlanBtn = document.getElementById('exportarPlanBtn');
@@ -1909,51 +1931,113 @@
                 return `${year}-${month}-${day}`;
             }
 
-            // Inicializar fechas mínimas y máximas
+            // Fecha máxima: 15 de mayo de 2026
+            const FECHA_MAXIMA = '2026-05-15';
+            
+            // Inicializar fechas
             const hoy = new Date();
             const hoyStr = formatearFecha(hoy);
             
-            // Calcular fecha máxima (hoy + 60 días)
-            const fechaMax = new Date(hoy);
-            fechaMax.setDate(hoy.getDate() + 60);
-            const fechaMaxStr = formatearFecha(fechaMax);
-
             // Establecer atributos de los inputs de fecha
             fechaInicioPlan.setAttribute('min', hoyStr);
-            fechaInicioPlan.value = hoyStr; // Valor por defecto = hoy
+            fechaInicioPlan.setAttribute('max', FECHA_MAXIMA);
+            fechaInicioPlan.value = hoyStr;
 
             fechaLimitePlan.setAttribute('min', hoyStr);
-            fechaLimitePlan.setAttribute('max', fechaMaxStr);
-            fechaLimitePlan.value = fechaMaxStr; // Valor por defecto = hoy + 60
+            fechaLimitePlan.setAttribute('max', FECHA_MAXIMA);
+            
+            // Establecer fecha fin por defecto (30 días después o 15 mayo, lo que sea menor)
+            const fechaFinDefault = new Date(hoy);
+            fechaFinDefault.setDate(hoy.getDate() + 30);
+            const fechaFinDefaultStr = formatearFecha(fechaFinDefault);
+            fechaLimitePlan.value = fechaFinDefaultStr > FECHA_MAXIMA ? FECHA_MAXIMA : fechaFinDefaultStr;
 
-            function sumarDias(fechaStr, dias) {
+            // Función para validar que una fecha no sea fin de semana
+            function esDiaSemana(fechaStr) {
                 const fecha = new Date(fechaStr + 'T00:00:00');
-                fecha.setDate(fecha.getDate() + dias);
-                return fecha.toISOString().split('T')[0];
+                const dia = fecha.getDay();
+                return dia !== 0 && dia !== 6; // 0 = domingo, 6 = sábado
             }
 
-            function validarRangoFechas() {
-                const inicio = new Date(fechaInicioPlan.value + 'T00:00:00');
-                const fin = new Date(fechaLimitePlan.value + 'T00:00:00');
-                const diffTime = fin - inicio;
-                const diffDays = diffTime / (1000 * 60 * 60 * 24);
-                if (diffDays > 60) {
-                    errorFechaLimite.style.display = 'block';
+            function validarFechas() {
+                const inicio = fechaInicioPlan.value;
+                const fin = fechaLimitePlan.value;
+                
+                if (!inicio || !fin) return false;
+
+                // Validar que no sea fin de semana
+                if (!esDiaSemana(inicio)) {
+                    errorFinSemana.style.display = 'block';
+                    errorFinSemana.textContent = 'La fecha de inicio no puede ser fin de semana. Elige un día de semana.';
                     return false;
-                } else {
-                    errorFechaLimite.style.display = 'none';
-                    return true;
                 }
+                
+                if (!esDiaSemana(fin)) {
+                    errorFinSemana.style.display = 'block';
+                    errorFinSemana.textContent = 'La fecha fin no puede ser fin de semana. Elige un día de semana.';
+                    return false;
+                }
+
+                // Validar que no exceda fecha máxima
+                if (inicio > FECHA_MAXIMA || fin > FECHA_MAXIMA) {
+                    errorFechaLimite.style.display = 'block';
+                    errorFinSemana.style.display = 'none';
+                    return false;
+                }
+
+                // Validar que fin sea mayor o igual a inicio
+                if (fin < inicio) {
+                    errorFechaLimite.style.display = 'block';
+                    errorFechaLimite.textContent = 'La fecha fin debe ser posterior o igual a la fecha de inicio.';
+                    errorFinSemana.style.display = 'none';
+                    return false;
+                }
+
+                errorFechaLimite.style.display = 'none';
+                errorFinSemana.style.display = 'none';
+                return true;
             }
 
-            function diasEntreFechas(inicio, fin, incluirFinde) {
+            // Validar cuando cambian las fechas
+            fechaInicioPlan.addEventListener('change', function() {
+                if (!esDiaSemana(this.value)) {
+                    alert('No puedes seleccionar fines de semana. Elige un día de semana.');
+                    // Revertir al valor anterior o al próximo día hábil
+                    const fecha = new Date(this.value + 'T00:00:00');
+                    fecha.setDate(fecha.getDate() + 1);
+                    while (!esDiaSemana(formatearFecha(fecha))) {
+                        fecha.setDate(fecha.getDate() + 1);
+                    }
+                    this.value = formatearFecha(fecha);
+                }
+                validarFechas();
+                calcularIntensidad();
+            });
+
+            fechaLimitePlan.addEventListener('change', function() {
+                if (!esDiaSemana(this.value)) {
+                    alert('No puedes seleccionar fines de semana. Elige un día de semana.');
+                    // Revertir al valor anterior o al día hábil anterior
+                    const fecha = new Date(this.value + 'T00:00:00');
+                    fecha.setDate(fecha.getDate() - 1);
+                    while (!esDiaSemana(formatearFecha(fecha))) {
+                        fecha.setDate(fecha.getDate() - 1);
+                    }
+                    this.value = formatearFecha(fecha);
+                }
+                validarFechas();
+                calcularIntensidad();
+            });
+
+            function diasEntreFechas(inicio, fin) {
                 let count = 0;
                 let current = new Date(inicio + 'T00:00:00');
                 current.setHours(0,0,0,0);
                 const end = new Date(fin + 'T00:00:00');
                 end.setHours(0,0,0,0);
                 while (current <= end) {
-                    if (incluirFinde || (current.getDay() !== 0 && current.getDay() !== 6)) {
+                    // Solo contar días de semana (lunes a viernes)
+                    if (current.getDay() !== 0 && current.getDay() !== 6) {
                         count++;
                     }
                     current.setDate(current.getDate() + 1);
@@ -1996,12 +2080,12 @@
                 const fin = fechaLimitePlan.value;
                 if (!inicio || !fin) return;
 
-                if (!validarRangoFechas()) {
-                    infoIntensidad.innerHTML = 'Ajusta la fecha fin (máx 60 días)';
+                if (!validarFechas()) {
+                    infoIntensidad.innerHTML = 'Ajusta las fechas (solo días hábiles, máximo 15 mayo 2026)';
                     return;
                 }
 
-                const diasDisponibles = diasEntreFechas(inicio, fin, incluirFinde.checked);
+                const diasDisponibles = diasEntreFechas(inicio, fin);
                 if (diasDisponibles <= 0) {
                     infoIntensidad.innerHTML = 'La fecha fin debe ser posterior a la inicio.';
                     return;
@@ -2031,8 +2115,8 @@
             }
 
             function generarPlan() {
-                if (!validarRangoFechas()) {
-                    alert('La diferencia entre fecha inicio y fin no puede ser mayor a 60 días.');
+                if (!validarFechas()) {
+                    alert('Por favor, corrige las fechas antes de generar el plan.');
                     return;
                 }
 
@@ -2055,7 +2139,7 @@
 
                 const inicio = fechaInicioPlan.value;
                 const fin = fechaLimitePlan.value;
-                const diasDisponibles = diasEntreFechas(inicio, fin, incluirFinde.checked);
+                const diasDisponibles = diasEntreFechas(inicio, fin);
                 if (diasDisponibles <= 0) {
                     alert('La fecha fin debe ser posterior a la inicio.');
                     return;
@@ -2063,18 +2147,18 @@
 
                 const cursosPorDia = Math.ceil(cursos.length / diasDisponibles);
 
-                // Distribuir en días
+                // Distribuir en días (solo días de semana)
                 const plan = [];
                 let diaActual = new Date(fechaInicio);
                 let index = 0;
                 while (index < cursos.length) {
-                    // Saltar fines de semana si no se incluyen
-                    if (!incluirFinde.checked) {
-                        while (diaActual.getDay() === 0 || diaActual.getDay() === 6) {
-                            diaActual.setDate(diaActual.getDate() + 1);
-                        }
+                    // Saltar fines de semana
+                    while (diaActual.getDay() === 0 || diaActual.getDay() === 6) {
+                        diaActual.setDate(diaActual.getDate() + 1);
                     }
+                    
                     const fechaStr = diaActual.toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                    
                     for (let i = 0; i < cursosPorDia && index < cursos.length; i++) {
                         plan.push({
                             fecha: fechaStr,
@@ -2083,6 +2167,7 @@
                         });
                         index++;
                     }
+                    
                     diaActual.setDate(diaActual.getDate() + 1);
                 }
 
@@ -2096,7 +2181,7 @@
                 });
                 htmlTabla += '</table>';
 
-                // Añadir tips motivacionales (normalizados)
+                // Añadir tips motivacionales
                 const tipsMotivacionales = normalizarTexto(`
                     <h3><i class="fas fa-hard-hat"></i> Tips y Pro-Tips para tu Plan de "Arquitectura del Exito"</h3>
                     <p><strong>1. Gestion de Agenda (El Blindaje de Valor)</strong><br>
@@ -2158,21 +2243,12 @@
             }
 
             // Eventos del planificador
-            fechaInicioPlan.addEventListener('change', function() {
-                validarRangoFechas();
-                calcularIntensidad();
-            });
-            fechaLimitePlan.addEventListener('change', function() {
-                validarRangoFechas();
-                calcularIntensidad();
-            });
-            incluirFinde.addEventListener('change', calcularIntensidad);
             soloPendientes.addEventListener('change', calcularIntensidad);
             minCursoSlider.addEventListener('input', calcularIntensidad);
             generarPlanBtn.addEventListener('click', generarPlan);
 
             // Inicializar planificador
-            validarRangoFechas();
+            validarFechas();
             calcularIntensidad();
 
             // Inicializar resto de la app
